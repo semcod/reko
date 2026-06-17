@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "reko"
-version = "0.1.0"
+version = "0.1.1"
 description = "Refaktoryzacja hardkodowanych wartości, struktur i kodu w projektach Python"
 readme = "README.md"
 license = "Apache-2.0"

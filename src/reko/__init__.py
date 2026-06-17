@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 
 from reko.config import RekoConfig, load_config
 from reko.models import (
