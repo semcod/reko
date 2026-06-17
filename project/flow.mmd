@@ -1,0 +1,26 @@
+flowchart TD
+%% generated in 0.00s
+
+    %% Entry points (blue)
+    classDef entry fill:#4dabf7,stroke:#1971c2,color:#fff
+
+    subgraph Core
+        src__reko__cli__main___print_findings["_print_findings"]
+        src__reko__cli__main__scan["scan"]
+        src__reko__cli__main__extract["extract"]
+        src__reko__cli__main__split["split"]
+        src__reko__cli__main__move_cmd["move_cmd"]
+        src__reko__cli__main__remove["remove"]
+        src__reko__cli__main__apply["apply"]
+        src__reko__cli__main__plan_cmd["plan_cmd"]
+        src__reko__scanner__detector___suggest_constant_name("_suggest_constant_name CC=9")
+        src__reko__scanner__detector___HardcodeVisitor__visit_JoinedStr["visit_JoinedStr"]
+        src__reko__scanner__detector___HardcodeVisitor__visit_Module["visit_Module"]
+        src__reko__scanner__detector___HardcodeVisitor__visit_FunctionDef["visit_FunctionDef"]
+        src__reko__scanner__detector___HardcodeVisitor__visit_AsyncFunctionDef["visit_AsyncFunctionDef"]
+        src__reko__scanner__detector___HardcodeVisitor__visit_ClassDef["visit_ClassDef"]
+        src__reko__scanner__detector___HardcodeVisitor__visit_Constant["visit_Constant"]
+        ...["+23 more"]
+    end
+
+    class src__reko__cli__main___print_findings,src__reko__cli__main__scan,src__reko__cli__main__extract,src__reko__cli__main__split,src__reko__cli__main__move_cmd,src__reko__cli__main__remove,src__reko__cli__main__apply,src__reko__cli__main__plan_cmd,src__reko__scanner__detector___HardcodeVisitor__visit_JoinedStr,src__reko__scanner__detector___HardcodeVisitor__visit_Module entry

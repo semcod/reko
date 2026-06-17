@@ -1,0 +1,528 @@
+source: code2llm
+# generated in 0.02s
+schema: code2llm.planfile_tickets.v1
+project_root: /home/tom/github/semcod/reko
+tickets:
+- signal: code2llm_smell_god_function
+  title: 'Address code smell: God Function: split_structures'
+  description: 'code2llm reports `God Function: split_structures` in `src/reko/refactor/split.py:148`.
+
+
+    Function ''split_structures'' is oversized: CC=14, fan-out=28, mutations=29.
+
+
+    Make the smallest refactor that removes the smell and run local tests.'
+  priority: high
+  labels:
+  - llm-ready
+  - code2llm
+  - code-smell
+  - god-function
+  files:
+  - src/reko/refactor/split.py
+  dedupe_key: 'code2llm:smell:god_function:src/reko/refactor/split.py:148:God Function:
+    split_structures'
+- signal: code2llm_smell_shotgun_surgery
+  title: 'Address code smell: Shotgun Surgery: config'
+  description: 'code2llm reports `Shotgun Surgery: config` in `src/reko/refactor/extract.py:20`.
+
+
+    Mutation of variable ''config'' spans 8 functions. Changing this logic requires
+    work in many places.
+
+
+    Make the smallest refactor that removes the smell and run local tests.'
+  priority: high
+  labels:
+  - llm-ready
+  - code2llm
+  - code-smell
+  - shotgun-surgery
+  files:
+  - src/reko/refactor/extract.py
+  dedupe_key: 'code2llm:smell:shotgun_surgery:src/reko/refactor/extract.py:20:Shotgun
+    Surgery: config'
+- signal: code2llm_smell_shotgun_surgery
+  title: 'Address code smell: Shotgun Surgery: lines'
+  description: 'code2llm reports `Shotgun Surgery: lines` in `src/reko/scanner/detector.py:72`.
+
+
+    Mutation of variable ''lines'' spans 7 functions. Changing this logic requires
+    work in many places.
+
+
+    Make the smallest refactor that removes the smell and run local tests.'
+  priority: high
+  labels:
+  - llm-ready
+  - code2llm
+  - code-smell
+  - shotgun-surgery
+  files:
+  - src/reko/scanner/detector.py
+  dedupe_key: 'code2llm:smell:shotgun_surgery:src/reko/scanner/detector.py:72:Shotgun
+    Surgery: lines'
+- signal: code2llm_smell_shotgun_surgery
+  title: 'Address code smell: Shotgun Surgery: name'
+  description: 'code2llm reports `Shotgun Surgery: name` in `src/reko/scanner/detector.py:41`.
+
+
+    Mutation of variable ''name'' spans 5 functions. Changing this logic requires
+    work in many places.
+
+
+    Make the smallest refactor that removes the smell and run local tests.'
+  priority: high
+  labels:
+  - llm-ready
+  - code2llm
+  - code-smell
+  - shotgun-surgery
+  files:
+  - src/reko/scanner/detector.py
+  dedupe_key: 'code2llm:smell:shotgun_surgery:src/reko/scanner/detector.py:41:Shotgun
+    Surgery: name'
+- signal: code2llm_smell_shotgun_surgery
+  title: 'Address code smell: Shotgun Surgery: result'
+  description: 'code2llm reports `Shotgun Surgery: result` in `src/reko/cli/main.py:101`.
+
+
+    Mutation of variable ''result'' spans 10 functions. Changing this logic requires
+    work in many places.
+
+
+    Make the smallest refactor that removes the smell and run local tests.'
+  priority: high
+  labels:
+  - llm-ready
+  - code2llm
+  - code-smell
+  - shotgun-surgery
+  files:
+  - src/reko/cli/main.py
+  dedupe_key: 'code2llm:smell:shotgun_surgery:src/reko/cli/main.py:101:Shotgun Surgery:
+    result'
+- signal: code2llm_smell_shotgun_surgery
+  title: 'Address code smell: Shotgun Surgery: tree'
+  description: 'code2llm reports `Shotgun Surgery: tree` in `src/reko/refactor/extract.py:20`.
+
+
+    Mutation of variable ''tree'' spans 5 functions. Changing this logic requires
+    work in many places.
+
+
+    Make the smallest refactor that removes the smell and run local tests.'
+  priority: high
+  labels:
+  - llm-ready
+  - code2llm
+  - code-smell
+  - shotgun-surgery
+  files:
+  - src/reko/refactor/extract.py
+  dedupe_key: 'code2llm:smell:shotgun_surgery:src/reko/refactor/extract.py:20:Shotgun
+    Surgery: tree'
+- signal: code2llm_cc
+  title: 'Reduce cyclomatic complexity: src.reko.refactor.extract.extract_constants
+    (CC=15)'
+  description: 'code2llm reports `src.reko.refactor.extract.extract_constants` at
+    `src/reko/refactor/extract.py:20` with cyclomatic complexity 15 (limit 15).
+
+
+    Extract smaller functions, flatten conditionals, or split strategy branches. Re-run
+    code2llm after the change and keep tests green.'
+  priority: normal
+  labels:
+  - llm-ready
+  - code2llm
+  - complexity
+  - refactor
+  files:
+  - src/reko/refactor/extract.py
+  dedupe_key: code2llm:cc:src/reko/refactor/extract.py:src.reko.refactor.extract.extract_constants
+- signal: code2llm_cc
+  title: 'Reduce cyclomatic complexity: src.reko.refactor.remove.remove_unused_constants
+    (CC=16)'
+  description: 'code2llm reports `src.reko.refactor.remove.remove_unused_constants`
+    at `src/reko/refactor/remove.py:18` with cyclomatic complexity 16 (limit 15).
+
+
+    Extract smaller functions, flatten conditionals, or split strategy branches. Re-run
+    code2llm after the change and keep tests green.'
+  priority: normal
+  labels:
+  - llm-ready
+  - code2llm
+  - complexity
+  - refactor
+  files:
+  - src/reko/refactor/remove.py
+  dedupe_key: code2llm:cc:src/reko/refactor/remove.py:src.reko.refactor.remove.remove_unused_constants
+- signal: code2llm_smell_data_clump
+  title: 'Address code smell: Data Clump: node, used, prefix'
+  description: 'code2llm reports `Data Clump: node, used, prefix` in `src/reko/refactor/split.py:113`.
+
+
+    Arguments (node, used, prefix) are used together in multiple functions: src.reko.refactor.split._split_dict_node,
+    src.reko.refactor.split._split_list_node.
+
+
+    Make the smallest refactor that removes the smell and run local tests.'
+  priority: normal
+  labels:
+  - llm-ready
+  - code2llm
+  - code-smell
+  - data-clump
+  files:
+  - src/reko/refactor/split.py
+  dedupe_key: 'code2llm:smell:data_clump:src/reko/refactor/split.py:113:Data Clump:
+    node, used, prefix'
+- signal: code2llm_smell_data_clump
+  title: 'Address code smell: Data Clump: node, used, prefix'
+  description: 'code2llm reports `Data Clump: node, used, prefix` in `src/reko/refactor/split.py:130`.
+
+
+    Arguments (node, used, prefix) are used together in multiple functions: src.reko.refactor.split._split_dict_node,
+    src.reko.refactor.split._split_list_node.
+
+
+    Make the smallest refactor that removes the smell and run local tests.'
+  priority: normal
+  labels:
+  - llm-ready
+  - code2llm
+  - code-smell
+  - data-clump
+  files:
+  - src/reko/refactor/split.py
+  dedupe_key: 'code2llm:smell:data_clump:src/reko/refactor/split.py:130:Data Clump:
+    node, used, prefix'
+- signal: code2llm_smell_data_clump
+  title: 'Address code smell: Data Clump: source, module, names'
+  description: 'code2llm reports `Data Clump: source, module, names` in `src/reko/refactor/move.py:42`.
+
+
+    Arguments (source, module, names) are used together in multiple functions: src.reko.refactor.move._ensure_import,
+    src.reko.refactor._ast_extract.insert_import.
+
+
+    Make the smallest refactor that removes the smell and run local tests.'
+  priority: normal
+  labels:
+  - llm-ready
+  - code2llm
+  - code-smell
+  - data-clump
+  files:
+  - src/reko/refactor/move.py
+  dedupe_key: 'code2llm:smell:data_clump:src/reko/refactor/move.py:42:Data Clump:
+    source, module, names'
+- signal: code2llm_smell_data_clump
+  title: 'Address code smell: Data Clump: source, module, names'
+  description: 'code2llm reports `Data Clump: source, module, names` in `src/reko/refactor/_ast_extract.py:136`.
+
+
+    Arguments (source, module, names) are used together in multiple functions: src.reko.refactor.move._ensure_import,
+    src.reko.refactor._ast_extract.insert_import.
+
+
+    Make the smallest refactor that removes the smell and run local tests.'
+  priority: normal
+  labels:
+  - llm-ready
+  - code2llm
+  - code-smell
+  - data-clump
+  files:
+  - src/reko/refactor/_ast_extract.py
+  dedupe_key: 'code2llm:smell:data_clump:src/reko/refactor/_ast_extract.py:136:Data
+    Clump: source, module, names'
+- signal: code2llm_smell_data_clump
+  title: 'Address code smell: Data Clump: tree, source, names'
+  description: 'code2llm reports `Data Clump: tree, source, names` in `src/reko/refactor/move.py:13`.
+
+
+    Arguments (tree, source, names) are used together in multiple functions: src.reko.refactor.move._assignment_lines,
+    src.reko.refactor.move._remove_assignments.
+
+
+    Make the smallest refactor that removes the smell and run local tests.'
+  priority: normal
+  labels:
+  - llm-ready
+  - code2llm
+  - code-smell
+  - data-clump
+  files:
+  - src/reko/refactor/move.py
+  dedupe_key: 'code2llm:smell:data_clump:src/reko/refactor/move.py:13:Data Clump:
+    tree, source, names'
+- signal: code2llm_smell_data_clump
+  title: 'Address code smell: Data Clump: tree, source, names'
+  description: 'code2llm reports `Data Clump: tree, source, names` in `src/reko/refactor/move.py:28`.
+
+
+    Arguments (tree, source, names) are used together in multiple functions: src.reko.refactor.move._assignment_lines,
+    src.reko.refactor.move._remove_assignments.
+
+
+    Make the smallest refactor that removes the smell and run local tests.'
+  priority: normal
+  labels:
+  - llm-ready
+  - code2llm
+  - code-smell
+  - data-clump
+  files:
+  - src/reko/refactor/move.py
+  dedupe_key: 'code2llm:smell:data_clump:src/reko/refactor/move.py:28:Data Clump:
+    tree, source, names'
+- signal: code2llm_smell_feature_envy
+  title: 'Address code smell: Feature Envy: apply_plan'
+  description: 'code2llm reports `Feature Envy: apply_plan` in `src/reko/refactor/engine.py:16`.
+
+
+    Function ''apply_plan'' mutates multiple variables in other modules: aggregate.skipped,
+    aggregate.created_files, aggregate.modified_files, aggregate.errors.
+
+
+    Make the smallest refactor that removes the smell and run local tests.'
+  priority: normal
+  labels:
+  - llm-ready
+  - code2llm
+  - code-smell
+  - feature-envy
+  files:
+  - src/reko/refactor/engine.py
+  dedupe_key: 'code2llm:smell:feature_envy:src/reko/refactor/engine.py:16:Feature
+    Envy: apply_plan'
+- signal: code2llm_smell_god_function
+  title: 'Address code smell: God Function: _get_source_segment'
+  description: 'code2llm reports `God Function: _get_source_segment` in `src/reko/scanner/detector.py:72`.
+
+
+    Function ''_get_source_segment'' is oversized: CC=7, fan-out=5, mutations=9.
+
+
+    Make the smallest refactor that removes the smell and run local tests.'
+  priority: normal
+  labels:
+  - llm-ready
+  - code2llm
+  - code-smell
+  - god-function
+  files:
+  - src/reko/scanner/detector.py
+  dedupe_key: 'code2llm:smell:god_function:src/reko/scanner/detector.py:72:God Function:
+    _get_source_segment'
+- signal: code2llm_smell_god_function
+  title: 'Address code smell: God Function: _print_findings'
+  description: 'code2llm reports `God Function: _print_findings` in `src/reko/cli/main.py:31`.
+
+
+    Function ''_print_findings'' is oversized: CC=5, fan-out=7, mutations=8.
+
+
+    Make the smallest refactor that removes the smell and run local tests.'
+  priority: normal
+  labels:
+  - llm-ready
+  - code2llm
+  - code-smell
+  - god-function
+  files:
+  - src/reko/cli/main.py
+  dedupe_key: 'code2llm:smell:god_function:src/reko/cli/main.py:31:God Function: _print_findings'
+- signal: code2llm_smell_god_function
+  title: 'Address code smell: God Function: _split_dict_node'
+  description: 'code2llm reports `God Function: _split_dict_node` in `src/reko/refactor/split.py:113`.
+
+
+    Function ''_split_dict_node'' is oversized: CC=3, fan-out=13, mutations=5.
+
+
+    Make the smallest refactor that removes the smell and run local tests.'
+  priority: normal
+  labels:
+  - llm-ready
+  - code2llm
+  - code-smell
+  - god-function
+  files:
+  - src/reko/refactor/split.py
+  dedupe_key: 'code2llm:smell:god_function:src/reko/refactor/split.py:113:God Function:
+    _split_dict_node'
+- signal: code2llm_smell_god_function
+  title: 'Address code smell: God Function: _suggest_constant_name'
+  description: 'code2llm reports `God Function: _suggest_constant_name` in `src/reko/scanner/detector.py:41`.
+
+
+    Function ''_suggest_constant_name'' is oversized: CC=9, fan-out=13, mutations=5.
+
+
+    Make the smallest refactor that removes the smell and run local tests.'
+  priority: normal
+  labels:
+  - llm-ready
+  - code2llm
+  - code-smell
+  - god-function
+  files:
+  - src/reko/scanner/detector.py
+  dedupe_key: 'code2llm:smell:god_function:src/reko/scanner/detector.py:41:God Function:
+    _suggest_constant_name'
+- signal: code2llm_smell_god_function
+  title: 'Address code smell: God Function: apply_plan'
+  description: 'code2llm reports `God Function: apply_plan` in `src/reko/refactor/engine.py:16`.
+
+
+    Function ''apply_plan'' is oversized: CC=8, fan-out=17, mutations=17.
+
+
+    Make the smallest refactor that removes the smell and run local tests.'
+  priority: normal
+  labels:
+  - llm-ready
+  - code2llm
+  - code-smell
+  - god-function
+  files:
+  - src/reko/refactor/engine.py
+  dedupe_key: 'code2llm:smell:god_function:src/reko/refactor/engine.py:16:God Function:
+    apply_plan'
+- signal: code2llm_smell_god_function
+  title: 'Address code smell: God Function: build_extraction_plan'
+  description: 'code2llm reports `God Function: build_extraction_plan` in `src/reko/refactor/_ast_extract.py:86`.
+
+
+    Function ''build_extraction_plan'' is oversized: CC=6, fan-out=13, mutations=17.
+
+
+    Make the smallest refactor that removes the smell and run local tests.'
+  priority: normal
+  labels:
+  - llm-ready
+  - code2llm
+  - code-smell
+  - god-function
+  files:
+  - src/reko/refactor/_ast_extract.py
+  dedupe_key: 'code2llm:smell:god_function:src/reko/refactor/_ast_extract.py:86:God
+    Function: build_extraction_plan'
+- signal: code2llm_smell_god_function
+  title: 'Address code smell: God Function: insert_import'
+  description: 'code2llm reports `God Function: insert_import` in `src/reko/refactor/_ast_extract.py:136`.
+
+
+    Function ''insert_import'' is oversized: CC=14, fan-out=9, mutations=10.
+
+
+    Make the smallest refactor that removes the smell and run local tests.'
+  priority: normal
+  labels:
+  - llm-ready
+  - code2llm
+  - code-smell
+  - god-function
+  files:
+  - src/reko/refactor/_ast_extract.py
+  dedupe_key: 'code2llm:smell:god_function:src/reko/refactor/_ast_extract.py:136:God
+    Function: insert_import'
+- signal: code2llm_smell_god_function
+  title: 'Address code smell: God Function: move_constants'
+  description: 'code2llm reports `God Function: move_constants` in `src/reko/refactor/move.py:55`.
+
+
+    Function ''move_constants'' is oversized: CC=8, fan-out=19, mutations=15.
+
+
+    Make the smallest refactor that removes the smell and run local tests.'
+  priority: normal
+  labels:
+  - llm-ready
+  - code2llm
+  - code-smell
+  - god-function
+  files:
+  - src/reko/refactor/move.py
+  dedupe_key: 'code2llm:smell:god_function:src/reko/refactor/move.py:55:God Function:
+    move_constants'
+- signal: code2llm_smell_god_function
+  title: 'Address code smell: God Function: plan_cmd'
+  description: 'code2llm reports `God Function: plan_cmd` in `src/reko/cli/main.py:134`.
+
+
+    Function ''plan_cmd'' is oversized: CC=5, fan-out=17, mutations=6.
+
+
+    Make the smallest refactor that removes the smell and run local tests.'
+  priority: normal
+  labels:
+  - llm-ready
+  - code2llm
+  - code-smell
+  - god-function
+  files:
+  - src/reko/cli/main.py
+  dedupe_key: 'code2llm:smell:god_function:src/reko/cli/main.py:134:God Function:
+    plan_cmd'
+- signal: code2llm_smell_god_function
+  title: 'Address code smell: God Function: scan'
+  description: 'code2llm reports `God Function: scan` in `src/reko/cli/main.py:55`.
+
+
+    Function ''scan'' is oversized: CC=5, fan-out=13, mutations=3.
+
+
+    Make the smallest refactor that removes the smell and run local tests.'
+  priority: normal
+  labels:
+  - llm-ready
+  - code2llm
+  - code-smell
+  - god-function
+  files:
+  - src/reko/cli/main.py
+  dedupe_key: 'code2llm:smell:god_function:src/reko/cli/main.py:55:God Function: scan'
+- signal: code2llm_smell_god_function
+  title: 'Address code smell: God Function: scan_project'
+  description: 'code2llm reports `God Function: scan_project` in `src/reko/scanner/detector.py:230`.
+
+
+    Function ''scan_project'' is oversized: CC=10, fan-out=14, mutations=8.
+
+
+    Make the smallest refactor that removes the smell and run local tests.'
+  priority: normal
+  labels:
+  - llm-ready
+  - code2llm
+  - code-smell
+  - god-function
+  files:
+  - src/reko/scanner/detector.py
+  dedupe_key: 'code2llm:smell:god_function:src/reko/scanner/detector.py:230:God Function:
+    scan_project'
+- signal: code2llm_smell_god_function
+  title: 'Address code smell: God Function: visit_Constant'
+  description: 'code2llm reports `God Function: visit_Constant` in `src/reko/scanner/detector.py:130`.
+
+
+    Function ''visit_Constant'' is oversized: CC=9, fan-out=11, mutations=0.
+
+
+    Make the smallest refactor that removes the smell and run local tests.'
+  priority: normal
+  labels:
+  - llm-ready
+  - code2llm
+  - code-smell
+  - god-function
+  files:
+  - src/reko/scanner/detector.py
+  dedupe_key: 'code2llm:smell:god_function:src/reko/scanner/detector.py:130:God Function:
+    visit_Constant'
+applied: []
+skipped: []

@@ -1,0 +1,73 @@
+// LESS format — define @variables here as needed
+
+app {
+  name: reko;
+  version: 0.1.1;
+}
+
+dependencies {
+  runtime: "typer>=0.12.0, rich>=13.0, pydantic>=2.0, pyyaml>=6.0, tomli>=2.0; python_version<'3.11'";
+  apply: libcst>=1.0;
+  dev: "reko[apply], pytest>=7.0, pytest-cov>=4.0, ruff>=0.4, goal>=2.1.0, costs>=0.1.20, pfix>=0.1.60";
+}
+
+entity[name="Finding"] {
+  kind: FindingKind!;
+  file: Path!;
+  line: int!;
+  col: int!;
+  end_line: int | None;
+  end_col: int | None;
+  value_repr: string!;
+  message: string!;
+  suggested_name: str | None;
+  severity: string!;
+  context: str | None;
+  metadata: dict[str, Any]!;
+}
+
+entity[name="ScanReport"] {
+  root: Path!;
+  findings: list[Finding]!;
+  files_scanned: int!;
+  counts: dict[str, int]!;
+}
+
+entity[name="RefactorChange"] {
+  action: RefactorAction!;
+  file: Path!;
+  description: string!;
+  line: int | None;
+  metadata: dict[str, Any]!;
+}
+
+entity[name="RefactorPlan"] {
+  root: Path!;
+  changes: list[RefactorChange]!;
+  dry_run: bool!;
+}
+
+interface[type="cli"] {
+  framework: argparse;
+}
+interface[type="cli"] page[name="reko"] {
+  entry: reko.cli.main:app;
+}
+
+env_vars {
+  keys: OPENROUTER_API_KEY, LLM_MODEL, LLM_BASE_URL, LLM_TEMPERATURE, LLM_MAX_TOKENS, PFIX_AUTO_APPLY, PFIX_AUTO_INSTALL_DEPS, PFIX_AUTO_RESTART, PFIX_MAX_RETRIES, PFIX_DRY_RUN, PFIX_ENABLED, PFIX_GIT_COMMIT, PFIX_GIT_PREFIX, PFIX_CREATE_BACKUPS, PIP_DISABLE_PIP_VERSION_CHECK;
+}
+
+deploy {
+  target: pip;
+}
+
+environment[name="local"] {
+  runtime: python;
+  env_file: .env;
+  template_file: .env.example;
+  python_version: >=3.10;
+  vars: LLM_BASE_URL, LLM_MAX_TOKENS, LLM_MODEL, LLM_TEMPERATURE, OPENROUTER_API_KEY, PFIX_AUTO_APPLY, PFIX_AUTO_INSTALL_DEPS, PFIX_AUTO_RESTART, PFIX_CREATE_BACKUPS, PFIX_DRY_RUN, PFIX_ENABLED, PFIX_GIT_COMMIT, PFIX_GIT_PREFIX, PFIX_MAX_RETRIES, PIP_DISABLE_PIP_VERSION_CHECK;
+  runtime_llm: OPENROUTER_API_KEY;
+  runtime_pfix: PFIX_AUTO_APPLY, PFIX_AUTO_INSTALL_DEPS, PFIX_AUTO_RESTART, PFIX_CREATE_BACKUPS, PFIX_DRY_RUN, PFIX_ENABLED, PFIX_GIT_COMMIT, PFIX_GIT_PREFIX, PFIX_MAX_RETRIES;
+}

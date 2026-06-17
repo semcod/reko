@@ -1,0 +1,56 @@
+# redup/duplication | 4 groups | 27f 1693L | 2026-06-17
+
+SUMMARY:
+  files_scanned: 27
+  total_lines:   1693
+  dup_groups:    4
+  dup_fragments: 8
+  saved_lines:   19
+  scan_ms:       3515
+
+HOTSPOTS[3] (files with most duplication):
+  src/reko/cli/main.py  dup=14L  groups=1  frags=2  (0.8%)
+  src/reko/refactor/_ast_extract.py  dup=12L  groups=3  frags=3  (0.7%)
+  src/reko/scanner/detector.py  dup=12L  groups=3  frags=3  (0.7%)
+
+DUPLICATES[4] (ranked by impact):
+  [f896f4f707da17b4]   STRU  remove  L=7 N=2 saved=7 sim=1.00
+      src/reko/cli/main.py:114-120  (remove)
+      src/reko/cli/main.py:124-130  (apply)
+  [b96136ca3d8e558b]   EXAC  visit_FunctionDef  L=4 N=2 saved=4 sim=1.00
+      src/reko/refactor/_ast_extract.py:45-48  (visit_FunctionDef)
+      src/reko/scanner/detector.py:115-118  (visit_FunctionDef)
+  [2d39164b839bdf47]   EXAC  visit_AsyncFunctionDef  L=4 N=2 saved=4 sim=1.00
+      src/reko/refactor/_ast_extract.py:50-53  (visit_AsyncFunctionDef)
+      src/reko/scanner/detector.py:120-123  (visit_AsyncFunctionDef)
+  [c9ba3f0f7fdde3c0]   EXAC  visit_ClassDef  L=4 N=2 saved=4 sim=1.00
+      src/reko/refactor/_ast_extract.py:55-58  (visit_ClassDef)
+      src/reko/scanner/detector.py:125-128  (visit_ClassDef)
+
+REFACTOR[4] (ranked by priority):
+  [1] ○ extract_function   → src/reko/cli/utils/remove.py
+      WHY: 2 occurrences of 7-line block across 1 files — saves 7 lines
+      FILES: src/reko/cli/main.py
+  [2] ○ extract_function   → src/reko/utils/visit_FunctionDef.py
+      WHY: 2 occurrences of 4-line block across 2 files — saves 4 lines
+      FILES: src/reko/refactor/_ast_extract.py, src/reko/scanner/detector.py
+  [3] ○ extract_function   → src/reko/utils/visit_AsyncFunctionDef.py
+      WHY: 2 occurrences of 4-line block across 2 files — saves 4 lines
+      FILES: src/reko/refactor/_ast_extract.py, src/reko/scanner/detector.py
+  [4] ○ extract_function   → src/reko/utils/visit_ClassDef.py
+      WHY: 2 occurrences of 4-line block across 2 files — saves 4 lines
+      FILES: src/reko/refactor/_ast_extract.py, src/reko/scanner/detector.py
+
+QUICK_WINS[1] (low risk, high savings — do first):
+  [1] extract_function   saved=7L  → src/reko/cli/utils/remove.py
+      FILES: main.py
+
+EFFORT_ESTIMATE (total ≈ 0.6h):
+  easy   remove                              saved=7L  ~14min
+  easy   visit_FunctionDef                   saved=4L  ~8min
+  easy   visit_AsyncFunctionDef              saved=4L  ~8min
+  easy   visit_ClassDef                      saved=4L  ~8min
+
+METRICS-TARGET:
+  dup_groups:  4 → 0
+  saved_lines: 19 lines recoverable

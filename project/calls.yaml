@@ -1,0 +1,665 @@
+project: /home/tom/github/semcod/reko
+generated_from: code2llm call graph analysis
+stats:
+  total_nodes: 54
+  total_edges: 56
+  modules_count: 12
+nodes:
+  src.reko.scanner.detector._suggest_constant_name:
+    name: _suggest_constant_name
+    module: src.reko.scanner.detector
+    line: 41
+    cyclomatic_complexity: 9
+    calls_out: 18
+    calls_in: 3
+  src.reko.refactor.engine.apply_plan:
+    name: apply_plan
+    module: src.reko.refactor.engine
+    line: 16
+    cyclomatic_complexity: 8
+    calls_out: 20
+    calls_in: 1
+  src.reko.scanner.detector._should_exclude:
+    name: _should_exclude
+    module: src.reko.scanner.detector
+    line: 20
+    cyclomatic_complexity: 4
+    calls_out: 5
+    calls_in: 1
+  src.reko.refactor.remove.remove_unused_constants:
+    name: remove_unused_constants
+    module: src.reko.refactor.remove
+    line: 18
+    cyclomatic_complexity: 16
+    calls_out: 27
+    calls_in: 2
+  src.reko.config._load_yaml:
+    name: _load_yaml
+    module: src.reko.config
+    line: 69
+    cyclomatic_complexity: 3
+    calls_out: 3
+    calls_in: 1
+  src.reko.refactor.move._remove_assignments:
+    name: _remove_assignments
+    module: src.reko.refactor.move
+    line: 28
+    cyclomatic_complexity: 8
+    calls_out: 6
+    calls_in: 1
+  src.reko.refactor.split._split_dict_node:
+    name: _split_dict_node
+    module: src.reko.refactor.split
+    line: 113
+    cyclomatic_complexity: 3
+    calls_out: 13
+    calls_in: 1
+  src.reko.refactor._utils.ensure_trailing_newline:
+    name: ensure_trailing_newline
+    module: src.reko.refactor._utils
+    line: 64
+    cyclomatic_complexity: 2
+    calls_out: 1
+    calls_in: 6
+  src.reko.refactor._utils.unique_name:
+    name: unique_name
+    module: src.reko.refactor._utils
+    line: 49
+    cyclomatic_complexity: 3
+    calls_out: 0
+    calls_in: 3
+  src.reko.refactor.extract._group_target_path:
+    name: _group_target_path
+    module: src.reko.refactor.extract
+    line: 14
+    cyclomatic_complexity: 2
+    calls_out: 0
+    calls_in: 1
+  src.reko.refactor.move.move_constants:
+    name: move_constants
+    module: src.reko.refactor.move
+    line: 55
+    cyclomatic_complexity: 8
+    calls_out: 28
+    calls_in: 2
+  src.reko.scanner.detector._get_source_segment:
+    name: _get_source_segment
+    module: src.reko.scanner.detector
+    line: 72
+    cyclomatic_complexity: 7
+    calls_out: 11
+    calls_in: 2
+  src.reko.refactor._utils.to_upper_snake:
+    name: to_upper_snake
+    module: src.reko.refactor._utils
+    line: 58
+    cyclomatic_complexity: 2
+    calls_out: 5
+    calls_in: 3
+  examples.run_all.prepare_workdir:
+    name: prepare_workdir
+    module: examples.run_all
+    line: 25
+    cyclomatic_complexity: 3
+    calls_out: 4
+    calls_in: 1
+  src.reko.cli.main.apply:
+    name: apply
+    module: src.reko.cli.main
+    line: 124
+    cyclomatic_complexity: 1
+    calls_out: 6
+    calls_in: 0
+  src.reko.refactor.split._split_list_node:
+    name: _split_list_node
+    module: src.reko.refactor.split
+    line: 130
+    cyclomatic_complexity: 2
+    calls_out: 11
+    calls_in: 1
+  src.reko.cli.main.split:
+    name: split
+    module: src.reko.cli.main
+    line: 89
+    cyclomatic_complexity: 2
+    calls_out: 7
+    calls_in: 0
+  src.reko.refactor.split._contains_node:
+    name: _contains_node
+    module: src.reko.refactor.split
+    line: 29
+    cyclomatic_complexity: 3
+    calls_out: 1
+    calls_in: 1
+  src.reko.refactor._ast_extract.transform_source:
+    name: transform_source
+    module: src.reko.refactor._ast_extract
+    line: 131
+    cyclomatic_complexity: 2
+    calls_out: 2
+    calls_in: 1
+  src.reko.refactor._utils.write_module:
+    name: write_module
+    module: src.reko.refactor._utils
+    line: 73
+    cyclomatic_complexity: 2
+    calls_out: 3
+    calls_in: 6
+  src.reko.scanner.detector.scan_file:
+    name: scan_file
+    module: src.reko.scanner.detector
+    line: 205
+    cyclomatic_complexity: 3
+    calls_out: 5
+    calls_in: 1
+  src.reko.refactor._utils.apply_replacements:
+    name: apply_replacements
+    module: src.reko.refactor._utils
+    line: 35
+    cyclomatic_complexity: 2
+    calls_out: 3
+    calls_in: 0
+  src.reko.cli.main.plan_cmd:
+    name: plan_cmd
+    module: src.reko.cli.main
+    line: 134
+    cyclomatic_complexity: 5
+    calls_out: 21
+    calls_in: 0
+  src.reko.scanner.detector._HardcodeVisitor.visit_List:
+    name: visit_List
+    module: src.reko.scanner.detector
+    line: 185
+    cyclomatic_complexity: 2
+    calls_out: 6
+    calls_in: 0
+  src.reko.cli.main.move_cmd:
+    name: move_cmd
+    module: src.reko.cli.main
+    line: 101
+    cyclomatic_complexity: 3
+    calls_out: 11
+    calls_in: 0
+  src.reko.refactor._utils._position_to_index:
+    name: _position_to_index
+    module: src.reko.refactor._utils
+    line: 28
+    cyclomatic_complexity: 4
+    calls_out: 6
+    calls_in: 2
+  src.reko.refactor.split._SplitFinder._insert_at:
+    name: _insert_at
+    module: src.reko.refactor.split
+    line: 85
+    cyclomatic_complexity: 5
+    calls_out: 4
+    calls_in: 0
+  src.reko.refactor._utils.read_module:
+    name: read_module
+    module: src.reko.refactor._utils
+    line: 68
+    cyclomatic_complexity: 1
+    calls_out: 2
+    calls_in: 5
+  src.reko.refactor.split._iter_scopes:
+    name: _iter_scopes
+    module: src.reko.refactor.split
+    line: 219
+    cyclomatic_complexity: 3
+    calls_out: 3
+    calls_in: 1
+  src.reko.scanner.detector._literal_size:
+    name: _literal_size
+    module: src.reko.scanner.detector
+    line: 64
+    cyclomatic_complexity: 3
+    calls_out: 4
+    calls_in: 2
+  src.reko.refactor.split._insert_index:
+    name: _insert_index
+    module: src.reko.refactor.split
+    line: 141
+    cyclomatic_complexity: 3
+    calls_out: 3
+    calls_in: 1
+  src.reko.cli.main.scan:
+    name: scan
+    module: src.reko.cli.main
+    line: 55
+    cyclomatic_complexity: 5
+    calls_out: 14
+    calls_in: 0
+  src.reko.refactor._utils.module_level_names:
+    name: module_level_names
+    module: src.reko.refactor._utils
+    line: 80
+    cyclomatic_complexity: 7
+    calls_out: 7
+    calls_in: 1
+  src.reko.refactor.split._make_assign:
+    name: _make_assign
+    module: src.reko.refactor.split
+    line: 109
+    cyclomatic_complexity: 1
+    calls_out: 3
+    calls_in: 2
+  src.reko.refactor._ast_extract._ExtractCollector.visit_Constant:
+    name: visit_Constant
+    module: src.reko.refactor._ast_extract
+    line: 60
+    cyclomatic_complexity: 9
+    calls_out: 12
+    calls_in: 0
+  src.reko.scanner.detector.scan_project:
+    name: scan_project
+    module: src.reko.scanner.detector
+    line: 230
+    cyclomatic_complexity: 10
+    calls_out: 16
+    calls_in: 2
+  src.reko.reporters.json_reporter.report_to_dict:
+    name: report_to_dict
+    module: src.reko.reporters.json_reporter
+    line: 13
+    cyclomatic_complexity: 2
+    calls_out: 3
+    calls_in: 1
+  src.reko.scanner.detector._HardcodeVisitor.visit_Dict:
+    name: visit_Dict
+    module: src.reko.scanner.detector
+    line: 165
+    cyclomatic_complexity: 4
+    calls_out: 8
+    calls_in: 0
+  src.reko.config.load_config:
+    name: load_config
+    module: src.reko.config
+    line: 88
+    cyclomatic_complexity: 5
+    calls_out: 7
+    calls_in: 7
+  src.reko.scanner.detector._HardcodeVisitor.visit_Constant:
+    name: visit_Constant
+    module: src.reko.scanner.detector
+    line: 130
+    cyclomatic_complexity: 9
+    calls_out: 20
+    calls_in: 0
+  src.reko.refactor._ast_extract.transform_module:
+    name: transform_module
+    module: src.reko.refactor._ast_extract
+    line: 125
+    cyclomatic_complexity: 1
+    calls_out: 4
+    calls_in: 1
+  src.reko.refactor.extract.extract_constants:
+    name: extract_constants
+    module: src.reko.refactor.extract
+    line: 20
+    cyclomatic_complexity: 15
+    calls_out: 22
+    calls_in: 2
+  src.reko.scanner.detector._is_magic_number:
+    name: _is_magic_number
+    module: src.reko.scanner.detector
+    line: 29
+    cyclomatic_complexity: 7
+    calls_out: 2
+    calls_in: 2
+  src.reko.reporters.json_reporter.write_report:
+    name: write_report
+    module: src.reko.reporters.json_reporter
+    line: 35
+    cyclomatic_complexity: 2
+    calls_out: 6
+    calls_in: 1
+  examples.run_all.run:
+    name: run
+    module: examples.run_all
+    line: 15
+    cyclomatic_complexity: 4
+    calls_out: 7
+    calls_in: 1
+  src.reko.config._load_toml:
+    name: _load_toml
+    module: src.reko.config
+    line: 77
+    cyclomatic_complexity: 3
+    calls_out: 6
+    calls_in: 1
+  src.reko.refactor.move._assignment_lines:
+    name: _assignment_lines
+    module: src.reko.refactor.move
+    line: 13
+    cyclomatic_complexity: 7
+    calls_out: 4
+    calls_in: 1
+  examples.run_all.main:
+    name: main
+    module: examples.run_all
+    line: 33
+    cyclomatic_complexity: 4
+    calls_out: 19
+    calls_in: 0
+  src.reko.refactor._ast_extract.build_extraction_plan:
+    name: build_extraction_plan
+    module: src.reko.refactor._ast_extract
+    line: 86
+    cyclomatic_complexity: 6
+    calls_out: 14
+    calls_in: 1
+  src.reko.refactor.split._SplitFinder.finalize:
+    name: finalize
+    module: src.reko.refactor.split
+    line: 94
+    cyclomatic_complexity: 7
+    calls_out: 5
+    calls_in: 0
+  src.reko.refactor.split.split_structures:
+    name: split_structures
+    module: src.reko.refactor.split
+    line: 148
+    cyclomatic_complexity: 14
+    calls_out: 33
+    calls_in: 2
+  src.reko.cli.main.remove:
+    name: remove
+    module: src.reko.cli.main
+    line: 114
+    cyclomatic_complexity: 1
+    calls_out: 6
+    calls_in: 0
+  src.reko.refactor._utils.collect_name_usages:
+    name: collect_name_usages
+    module: src.reko.refactor._utils
+    line: 92
+    cyclomatic_complexity: 1
+    calls_out: 5
+    calls_in: 1
+  src.reko.cli.main.extract:
+    name: extract
+    module: src.reko.cli.main
+    line: 75
+    cyclomatic_complexity: 2
+    calls_out: 9
+    calls_in: 0
+edges:
+- caller: examples.run_all.main
+  callee: examples.run_all.prepare_workdir
+  call_type: resolved
+- caller: examples.run_all.main
+  callee: examples.run_all.run
+  call_type: resolved
+- caller: src.reko.config.load_config
+  callee: src.reko.config._load_toml
+  call_type: resolved
+- caller: src.reko.config.load_config
+  callee: src.reko.config._load_yaml
+  call_type: resolved
+- caller: src.reko.cli.main.scan
+  callee: src.reko.config.load_config
+  call_type: resolved
+- caller: src.reko.cli.main.scan
+  callee: src.reko.scanner.detector.scan_project
+  call_type: resolved
+- caller: src.reko.cli.main.scan
+  callee: src.reko.reporters.json_reporter.write_report
+  call_type: resolved
+- caller: src.reko.cli.main.extract
+  callee: src.reko.config.load_config
+  call_type: resolved
+- caller: src.reko.cli.main.extract
+  callee: src.reko.refactor.extract.extract_constants
+  call_type: resolved
+- caller: src.reko.cli.main.split
+  callee: src.reko.refactor.split.split_structures
+  call_type: resolved
+- caller: src.reko.cli.main.move_cmd
+  callee: src.reko.refactor.move.move_constants
+  call_type: resolved
+- caller: src.reko.cli.main.remove
+  callee: src.reko.refactor.remove.remove_unused_constants
+  call_type: resolved
+- caller: src.reko.cli.main.apply
+  callee: src.reko.refactor.engine.apply_plan
+  call_type: resolved
+- caller: src.reko.cli.main.plan_cmd
+  callee: src.reko.config.load_config
+  call_type: resolved
+- caller: src.reko.cli.main.plan_cmd
+  callee: src.reko.scanner.detector.scan_project
+  call_type: resolved
+- caller: src.reko.scanner.detector._HardcodeVisitor.visit_Constant
+  callee: src.reko.scanner.detector._is_magic_number
+  call_type: resolved
+- caller: src.reko.scanner.detector._HardcodeVisitor.visit_Dict
+  callee: src.reko.scanner.detector._literal_size
+  call_type: resolved
+- caller: src.reko.scanner.detector._HardcodeVisitor.visit_Dict
+  callee: src.reko.scanner.detector._get_source_segment
+  call_type: resolved
+- caller: src.reko.scanner.detector._HardcodeVisitor.visit_List
+  callee: src.reko.scanner.detector._literal_size
+  call_type: resolved
+- caller: src.reko.scanner.detector.scan_project
+  callee: src.reko.config.load_config
+  call_type: resolved
+- caller: src.reko.scanner.detector.scan_project
+  callee: src.reko.scanner.detector._should_exclude
+  call_type: resolved
+- caller: src.reko.scanner.detector.scan_project
+  callee: src.reko.scanner.detector.scan_file
+  call_type: resolved
+- caller: src.reko.reporters.json_reporter.write_report
+  callee: src.reko.reporters.json_reporter.report_to_dict
+  call_type: resolved
+- caller: src.reko.refactor.extract.extract_constants
+  callee: src.reko.refactor.extract._group_target_path
+  call_type: resolved
+- caller: src.reko.refactor.extract.extract_constants
+  callee: src.reko.refactor._utils.read_module
+  call_type: resolved
+- caller: src.reko.refactor.extract.extract_constants
+  callee: src.reko.refactor._ast_extract.build_extraction_plan
+  call_type: resolved
+- caller: src.reko.refactor.extract.extract_constants
+  callee: src.reko.refactor._ast_extract.transform_source
+  call_type: resolved
+- caller: src.reko.refactor.extract.extract_constants
+  callee: src.reko.refactor._utils.ensure_trailing_newline
+  call_type: resolved
+- caller: src.reko.refactor.extract.extract_constants
+  callee: src.reko.refactor._utils.write_module
+  call_type: resolved
+- caller: src.reko.refactor._utils.apply_replacements
+  callee: src.reko.refactor._utils._position_to_index
+  call_type: resolved
+- caller: src.reko.refactor._utils.write_module
+  callee: src.reko.refactor._utils.ensure_trailing_newline
+  call_type: resolved
+- caller: src.reko.refactor.move.move_constants
+  callee: src.reko.refactor._utils.read_module
+  call_type: resolved
+- caller: src.reko.refactor.move.move_constants
+  callee: src.reko.refactor.move._assignment_lines
+  call_type: resolved
+- caller: src.reko.refactor.move.move_constants
+  callee: src.reko.refactor._utils.ensure_trailing_newline
+  call_type: resolved
+- caller: src.reko.refactor.move.move_constants
+  callee: src.reko.refactor.move._remove_assignments
+  call_type: resolved
+- caller: src.reko.refactor.move.move_constants
+  callee: src.reko.refactor._utils.write_module
+  call_type: resolved
+- caller: src.reko.refactor.move.move_constants
+  callee: src.reko.config.load_config
+  call_type: resolved
+- caller: src.reko.refactor.remove.remove_unused_constants
+  callee: src.reko.refactor._utils.read_module
+  call_type: resolved
+- caller: src.reko.refactor.remove.remove_unused_constants
+  callee: src.reko.refactor._utils.module_level_names
+  call_type: resolved
+- caller: src.reko.refactor.remove.remove_unused_constants
+  callee: src.reko.refactor._utils.collect_name_usages
+  call_type: resolved
+- caller: src.reko.refactor.remove.remove_unused_constants
+  callee: src.reko.refactor._utils.write_module
+  call_type: resolved
+- caller: src.reko.refactor.split._SplitFinder._insert_at
+  callee: src.reko.refactor.split._insert_index
+  call_type: resolved
+- caller: src.reko.refactor.split._SplitFinder.finalize
+  callee: src.reko.refactor.split._contains_node
+  call_type: resolved
+- caller: src.reko.refactor.split._split_dict_node
+  callee: src.reko.refactor._utils.unique_name
+  call_type: resolved
+- caller: src.reko.refactor.split._split_dict_node
+  callee: src.reko.refactor._utils.to_upper_snake
+  call_type: resolved
+- caller: src.reko.refactor.split._split_dict_node
+  callee: src.reko.refactor.split._make_assign
+  call_type: resolved
+- caller: src.reko.refactor.split._split_list_node
+  callee: src.reko.refactor._utils.unique_name
+  call_type: resolved
+- caller: src.reko.refactor.split._split_list_node
+  callee: src.reko.refactor._utils.to_upper_snake
+  call_type: resolved
+- caller: src.reko.refactor.split._split_list_node
+  callee: src.reko.refactor.split._make_assign
+  call_type: resolved
+- caller: src.reko.refactor.split.split_structures
+  callee: src.reko.refactor._utils.read_module
+  call_type: resolved
+- caller: src.reko.refactor.split.split_structures
+  callee: src.reko.refactor.split._iter_scopes
+  call_type: resolved
+- caller: src.reko.refactor.split.split_structures
+  callee: src.reko.refactor._utils.write_module
+  call_type: resolved
+- caller: src.reko.refactor._ast_extract._ExtractCollector.visit_Constant
+  callee: src.reko.scanner.detector._is_magic_number
+  call_type: resolved
+- caller: src.reko.refactor._ast_extract.build_extraction_plan
+  callee: src.reko.scanner.detector._suggest_constant_name
+  call_type: resolved
+- caller: src.reko.refactor._ast_extract.build_extraction_plan
+  callee: src.reko.refactor._utils.unique_name
+  call_type: resolved
+- caller: src.reko.refactor._ast_extract.transform_source
+  callee: src.reko.refactor._ast_extract.transform_module
+  call_type: resolved
+modules:
+  examples.run_all:
+  - examples.run_all.main
+  - examples.run_all.prepare_workdir
+  - examples.run_all.run
+  src.reko.cli.main:
+  - src.reko.cli.main.apply
+  - src.reko.cli.main.extract
+  - src.reko.cli.main.move_cmd
+  - src.reko.cli.main.plan_cmd
+  - src.reko.cli.main.remove
+  - src.reko.cli.main.scan
+  - src.reko.cli.main.split
+  src.reko.config:
+  - src.reko.config._load_toml
+  - src.reko.config._load_yaml
+  - src.reko.config.load_config
+  src.reko.refactor._ast_extract:
+  - src.reko.refactor._ast_extract._ExtractCollector.visit_Constant
+  - src.reko.refactor._ast_extract.build_extraction_plan
+  - src.reko.refactor._ast_extract.transform_module
+  - src.reko.refactor._ast_extract.transform_source
+  src.reko.refactor._utils:
+  - src.reko.refactor._utils._position_to_index
+  - src.reko.refactor._utils.apply_replacements
+  - src.reko.refactor._utils.collect_name_usages
+  - src.reko.refactor._utils.ensure_trailing_newline
+  - src.reko.refactor._utils.module_level_names
+  - src.reko.refactor._utils.read_module
+  - src.reko.refactor._utils.to_upper_snake
+  - src.reko.refactor._utils.unique_name
+  - src.reko.refactor._utils.write_module
+  src.reko.refactor.engine:
+  - src.reko.refactor.engine.apply_plan
+  src.reko.refactor.extract:
+  - src.reko.refactor.extract._group_target_path
+  - src.reko.refactor.extract.extract_constants
+  src.reko.refactor.move:
+  - src.reko.refactor.move._assignment_lines
+  - src.reko.refactor.move._remove_assignments
+  - src.reko.refactor.move.move_constants
+  src.reko.refactor.remove:
+  - src.reko.refactor.remove.remove_unused_constants
+  src.reko.refactor.split:
+  - src.reko.refactor.split._SplitFinder._insert_at
+  - src.reko.refactor.split._SplitFinder.finalize
+  - src.reko.refactor.split._contains_node
+  - src.reko.refactor.split._insert_index
+  - src.reko.refactor.split._iter_scopes
+  - src.reko.refactor.split._make_assign
+  - src.reko.refactor.split._split_dict_node
+  - src.reko.refactor.split._split_list_node
+  - src.reko.refactor.split.split_structures
+  src.reko.reporters.json_reporter:
+  - src.reko.reporters.json_reporter.report_to_dict
+  - src.reko.reporters.json_reporter.write_report
+  src.reko.scanner.detector:
+  - src.reko.scanner.detector._HardcodeVisitor.visit_Constant
+  - src.reko.scanner.detector._HardcodeVisitor.visit_Dict
+  - src.reko.scanner.detector._HardcodeVisitor.visit_List
+  - src.reko.scanner.detector._get_source_segment
+  - src.reko.scanner.detector._is_magic_number
+  - src.reko.scanner.detector._literal_size
+  - src.reko.scanner.detector._should_exclude
+  - src.reko.scanner.detector._suggest_constant_name
+  - src.reko.scanner.detector.scan_file
+  - src.reko.scanner.detector.scan_project
+entry_points:
+- examples.01-hardcoded-api.before.fetch_orders
+- examples.01-hardcoded-api.before.fetch_users
+- examples.01-hardcoded-api.before.is_premium
+- examples.02-inline-config.before.get_settings
+- examples.03-unused-constants.before.build_url
+- examples.run_all.main
+- src.reko.cli.main.apply
+- src.reko.cli.main.extract
+- src.reko.cli.main.move_cmd
+- src.reko.cli.main.plan_cmd
+- src.reko.cli.main.remove
+- src.reko.cli.main.scan
+- src.reko.cli.main.split
+- src.reko.refactor._ast_extract._ExtractCollector.__init__
+- src.reko.refactor._ast_extract._ExtractCollector.visit_AsyncFunctionDef
+- src.reko.refactor._ast_extract._ExtractCollector.visit_ClassDef
+- src.reko.refactor._ast_extract._ExtractCollector.visit_Constant
+- src.reko.refactor._ast_extract._ExtractCollector.visit_FunctionDef
+- src.reko.refactor._ast_extract._ExtractTransformer.__init__
+- src.reko.refactor._ast_extract._ExtractTransformer.visit_Constant
+- src.reko.refactor._ast_extract._InsideJoinedStr.__init__
+- src.reko.refactor._ast_extract._InsideJoinedStr.visit_JoinedStr
+- src.reko.refactor._utils._line_offsets
+- src.reko.refactor._utils.apply_replacements
+- src.reko.refactor.split._SplitFinder.__init__
+- src.reko.refactor.split._SplitFinder._insert_at
+- src.reko.refactor.split._SplitFinder.finalize
+- src.reko.refactor.split._SplitFinder.visit
+- src.reko.refactor.split._SplitFinder.visit_AsyncFunctionDef
+- src.reko.refactor.split._SplitFinder.visit_Dict
+- src.reko.refactor.split._SplitFinder.visit_FunctionDef
+- src.reko.refactor.split._SplitFinder.visit_List
+- src.reko.refactor.split._SplitFinder.visit_Module
+- src.reko.refactor.split._literal_size
+- src.reko.scanner.detector._HardcodeVisitor.__init__
+- src.reko.scanner.detector._HardcodeVisitor.visit_AsyncFunctionDef
+- src.reko.scanner.detector._HardcodeVisitor.visit_ClassDef
+- src.reko.scanner.detector._HardcodeVisitor.visit_Constant
+- src.reko.scanner.detector._HardcodeVisitor.visit_Dict
+- src.reko.scanner.detector._HardcodeVisitor.visit_FunctionDef
+- src.reko.scanner.detector._HardcodeVisitor.visit_JoinedStr
+- src.reko.scanner.detector._HardcodeVisitor.visit_List
+- src.reko.scanner.detector._HardcodeVisitor.visit_Module

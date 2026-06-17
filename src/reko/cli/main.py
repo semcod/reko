@@ -28,6 +28,23 @@ app = typer.Typer(
 console = Console()
 
 
+def _require_python_file(path: Path) -> Path:
+    try:
+        from reko.refactor._utils import require_python_file
+
+        return require_python_file(path)
+    except FileNotFoundError as exc:
+        console.print(f"[red]Błąd:[/red] {exc}")
+        console.print(
+            "[dim]Podaj istniejący plik .py, np. po `reko extract` utworzysz constants.py "
+            "albo użyj pliku z examples/03-unused-constants/before.py[/dim]"
+        )
+        raise typer.Exit(code=1) from exc
+    except (IsADirectoryError, ValueError) as exc:
+        console.print(f"[red]Błąd:[/red] {exc}")
+        raise typer.Exit(code=1) from exc
+
+
 def _print_findings(report) -> None:
     table = Table(title="Hardcoded findings")
     table.add_column("Kind")
@@ -78,6 +95,7 @@ def extract(
     dry_run: bool = typer.Option(True, "--dry-run/--apply", help="Tylko podgląd / zapis."),
 ) -> None:
     """Wyciągnij hardkod do modułu stałych."""
+    path = _require_python_file(path)
     config = load_config(path.parent)
     result = extract_constants(path, target=target, config=config, dry_run=dry_run)
     console.print(result.model_dump(mode="json"))
@@ -91,6 +109,7 @@ def split(
     dry_run: bool = typer.Option(True, "--dry-run/--apply", help="Tylko podgląd / zapis."),
 ) -> None:
     """Rozbij duże dict/list na mniejsze stałe."""
+    path = _require_python_file(path)
     result = split_structures(path, dry_run=dry_run)
     console.print(result.model_dump(mode="json"))
     if dry_run:
@@ -105,6 +124,7 @@ def move_cmd(
     dry_run: bool = typer.Option(True, "--dry-run/--apply", help="Tylko podgląd / zapis."),
 ) -> None:
     """Przenieś stałe między modułami."""
+    source = _require_python_file(source)
     name_set = {part.strip() for part in names.split(",") if part.strip()}
     result = move_constants(source, target, names=name_set, dry_run=dry_run)
     console.print(result.model_dump(mode="json"))
@@ -116,6 +136,7 @@ def remove(
     dry_run: bool = typer.Option(True, "--dry-run/--apply", help="Tylko podgląd / zapis."),
 ) -> None:
     """Usuń nieużywane stałe modułowe."""
+    path = _require_python_file(path)
     result = remove_unused_constants(path, dry_run=dry_run)
     console.print(result.model_dump(mode="json"))
 

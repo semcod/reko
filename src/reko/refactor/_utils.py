@@ -65,8 +65,24 @@ def ensure_trailing_newline(text: str) -> str:
     return text if text.endswith("\n") else text + "\n"
 
 
+def require_python_file(path: Path) -> Path:
+    """Validate that path points to an existing Python source file."""
+    resolved = path.expanduser().resolve()
+    if not resolved.exists():
+        msg = f"Plik nie istnieje: {path}"
+        raise FileNotFoundError(msg)
+    if not resolved.is_file():
+        msg = f"Oczekiwano pliku Python, nie katalogu: {path}"
+        raise IsADirectoryError(msg)
+    if resolved.suffix != ".py":
+        msg = f"Oczekiwano pliku .py: {path}"
+        raise ValueError(msg)
+    return resolved
+
+
 def read_module(path: Path) -> tuple[str, ast.Module]:
-    source = path.read_text(encoding="utf-8")
+    resolved = require_python_file(path)
+    source = resolved.read_text(encoding="utf-8")
     return source, ast.parse(source)
 
 

@@ -1,0 +1,52 @@
+# reko | 88 func | 15f | 2312L | python | 2026-06-17
+# generated in 0.00s
+
+HEALTH:
+  CC̄=3.7  critical=5 (limit:10)  dup=0  cycles=0
+
+ALERTS[15]:
+  !!! high_fan_out     split_structures = 28 (limit:10)
+  !!  high_fan_out     move_constants = 19 (limit:10)
+  !!  high_fan_out     plan_cmd = 17 (limit:10)
+  !!  high_fan_out     apply_plan = 17 (limit:10)
+  !!  high_fan_out     extract_constants = 16 (limit:10)
+  !!  high_fan_out     remove_unused_constants = 15 (limit:10)
+  !   cc_exceeded      remove_unused_constants = 16 (limit:15)
+  !   cc_exceeded      extract_constants = 15 (limit:15)
+  !   high_fan_out     scan_project = 14 (limit:10)
+  !   high_fan_out     scan = 13 (limit:10)
+
+MODULES[27] (top by size):
+  M[goal.yaml] 511L C:0 F:0 CC↑0 D:0 (yaml)
+  M[src/reko/scanner/detector.py] 260L C:1 F:17 CC↑10 D:2 (python)
+  M[src/reko/refactor/split.py] 224L C:2 F:19 CC↑14 D:2 (python)
+  M[src/reko/cli/main.py] 172L C:0 F:8 CC↑5 D:0 (python)
+  M[src/reko/refactor/_ast_extract.py] 165L C:5 F:13 CC↑14 D:1 (python)
+  M[pyproject.toml] 107L C:0 F:0 CC↑0 D:0 (toml)
+  M[src/reko/config.py] 104L C:5 F:3 CC↑5 D:5 (python)
+  M[src/reko/refactor/move.py] 103L C:0 F:4 CC↑8 D:2 (python)
+  M[src/reko/refactor/_utils.py] 101L C:1 F:10 CC↑7 D:5 (python)
+  M[src/reko/models.py] 82L C:7 F:0 CC↑0 D:0 (python)
+  M[src/reko/refactor/extract.py] 75L C:0 F:2 CC↑15 D:2 (python)
+  M[src/reko/refactor/remove.py] 70L C:0 F:1 CC↑16 D:2 (python)
+  M[examples/run_all.py] 67L C:0 F:3 CC↑4 D:0 (python)
+  M[project.sh] 63L C:0 F:0 CC↑0 D:0 (shell)
+  M[src/reko/refactor/engine.py] 45L C:0 F:1 CC↑8 D:1 (python)
+  LANGS: python:23/shell:2/yaml:1/toml:1
+
+HOTSPOTS[10]:
+  ★ split_structures fan=28  // Orchestrates 28 calls
+  ★ move_constants fan=19  // Orchestrates 19 calls
+  ★ plan_cmd fan=17  // Wygeneruj plan refaktoryzacji na podstawie skanu.
+  ★ apply_plan fan=17  // Orchestrates 17 calls
+  ★ extract_constants fan=16  // Orchestrates 16 calls
+
+REFACTOR[6]:
+  [1] H/H Split god module goal.yaml (511L, 0 classes)
+  [2] M/L Split extract_constants (CC=15)
+  [3] M/L Split remove_unused_constants (CC=16)
+  [4] M/M Reduce split_structures fan-out (currently 28)
+  [5] M/M Reduce move_constants fan-out (currently 19)
+
+EVOLUTION:
+  2026-06-17 CC̄=3.7 crit=5 2312L // Automated analysis

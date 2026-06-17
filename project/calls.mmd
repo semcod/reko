@@ -1,0 +1,116 @@
+flowchart LR
+%% generated in 0.00s
+    subgraph examples__run_all
+        examples__run_all__prepare_workdir["prepare_workdir"]
+        examples__run_all__run["run"]
+        examples__run_all__main["main"]
+    end
+    subgraph src__reko
+        src__reko__scanner__detector___suggest_constant_name["_suggest_constant_name"]
+        src__reko__refactor__engine__apply_plan["apply_plan"]
+        src__reko__scanner__detector___should_exclude["_should_exclude"]
+        src__reko__refactor__remove__remove_unused_constants["remove_unused_constants"]
+        src__reko__config___load_yaml["_load_yaml"]
+        src__reko__refactor__move___remove_assignments["_remove_assignments"]
+        src__reko__refactor__split___split_dict_node["_split_dict_node"]
+        src__reko__refactor___utils__ensure_trailing_newline["ensure_trailing_newline"]
+        src__reko__refactor___utils__unique_name["unique_name"]
+        src__reko__refactor__extract___group_target_path["_group_target_path"]
+        src__reko__refactor__move__move_constants["move_constants"]
+        src__reko__scanner__detector___get_source_segment["_get_source_segment"]
+        src__reko__refactor___utils__to_upper_snake["to_upper_snake"]
+        src__reko__cli__main__apply["apply"]
+        src__reko__refactor__split___split_list_node["_split_list_node"]
+        src__reko__cli__main__split["split"]
+        src__reko__refactor__split___contains_node["_contains_node"]
+        src__reko__refactor___ast_extract__transform_source["transform_source"]
+        src__reko__refactor___utils__write_module["write_module"]
+        src__reko__scanner__detector__scan_file["scan_file"]
+        src__reko__refactor___utils__apply_replacements["apply_replacements"]
+        src__reko__cli__main__plan_cmd["plan_cmd"]
+        src__reko__scanner__detector___HardcodeVisitor__visit_List["visit_List"]
+        src__reko__cli__main__move_cmd["move_cmd"]
+        src__reko__refactor___utils___position_to_index["_position_to_index"]
+        src__reko__refactor__split___SplitFinder___insert_at["_insert_at"]
+        src__reko__refactor___utils__read_module["read_module"]
+        src__reko__refactor__split___iter_scopes["_iter_scopes"]
+        src__reko__scanner__detector___literal_size["_literal_size"]
+        src__reko__refactor__split___insert_index["_insert_index"]
+        src__reko__cli__main__scan["scan"]
+        src__reko__refactor___utils__module_level_names["module_level_names"]
+        src__reko__refactor__split___make_assign["_make_assign"]
+        src__reko__refactor___ast_extract___ExtractCollector__visit_Constant["visit_Constant"]
+        src__reko__scanner__detector__scan_project["scan_project"]
+        src__reko__reporters__json_reporter__report_to_dict["report_to_dict"]
+        src__reko__scanner__detector___HardcodeVisitor__visit_Dict["visit_Dict"]
+        src__reko__config__load_config["load_config"]
+        src__reko__scanner__detector___HardcodeVisitor__visit_Constant["visit_Constant"]
+        src__reko__refactor___ast_extract__transform_module["transform_module"]
+        src__reko__refactor__extract__extract_constants["extract_constants"]
+        src__reko__scanner__detector___is_magic_number["_is_magic_number"]
+        src__reko__reporters__json_reporter__write_report["write_report"]
+        src__reko__config___load_toml["_load_toml"]
+        src__reko__refactor__move___assignment_lines["_assignment_lines"]
+        src__reko__refactor___ast_extract__build_extraction_plan["build_extraction_plan"]
+        src__reko__refactor__split___SplitFinder__finalize["finalize"]
+        src__reko__refactor__split__split_structures["split_structures"]
+        src__reko__cli__main__remove["remove"]
+        src__reko__refactor___utils__collect_name_usages["collect_name_usages"]
+        src__reko__cli__main__extract["extract"]
+    end
+    examples__run_all__main --> examples__run_all__prepare_workdir
+    examples__run_all__main --> examples__run_all__run
+    src__reko__config__load_config --> src__reko__config___load_toml
+    src__reko__config__load_config --> src__reko__config___load_yaml
+    src__reko__cli__main__scan --> src__reko__config__load_config
+    src__reko__cli__main__scan --> src__reko__scanner__detector__scan_project
+    src__reko__cli__main__scan --> src__reko__reporters__json_reporter__write_report
+    src__reko__cli__main__extract --> src__reko__config__load_config
+    src__reko__cli__main__extract --> src__reko__refactor__extract__extract_constants
+    src__reko__cli__main__split --> src__reko__refactor__split__split_structures
+    src__reko__cli__main__move_cmd --> src__reko__refactor__move__move_constants
+    src__reko__cli__main__remove --> src__reko__refactor__remove__remove_unused_constants
+    src__reko__cli__main__apply --> src__reko__refactor__engine__apply_plan
+    src__reko__cli__main__plan_cmd --> src__reko__config__load_config
+    src__reko__cli__main__plan_cmd --> src__reko__scanner__detector__scan_project
+    src__reko__scanner__detector___HardcodeVisitor__visit_Constant --> src__reko__scanner__detector___is_magic_number
+    src__reko__scanner__detector___HardcodeVisitor__visit_Dict --> src__reko__scanner__detector___literal_size
+    src__reko__scanner__detector___HardcodeVisitor__visit_Dict --> src__reko__scanner__detector___get_source_segment
+    src__reko__scanner__detector___HardcodeVisitor__visit_List --> src__reko__scanner__detector___literal_size
+    src__reko__scanner__detector__scan_project --> src__reko__config__load_config
+    src__reko__scanner__detector__scan_project --> src__reko__scanner__detector___should_exclude
+    src__reko__scanner__detector__scan_project --> src__reko__scanner__detector__scan_file
+    src__reko__reporters__json_reporter__write_report --> src__reko__reporters__json_reporter__report_to_dict
+    src__reko__refactor__extract__extract_constants --> src__reko__refactor__extract___group_target_path
+    src__reko__refactor__extract__extract_constants --> src__reko__refactor___utils__read_module
+    src__reko__refactor__extract__extract_constants --> src__reko__refactor___ast_extract__build_extraction_plan
+    src__reko__refactor__extract__extract_constants --> src__reko__refactor___ast_extract__transform_source
+    src__reko__refactor__extract__extract_constants --> src__reko__refactor___utils__ensure_trailing_newline
+    src__reko__refactor__extract__extract_constants --> src__reko__refactor___utils__write_module
+    src__reko__refactor___utils__apply_replacements --> src__reko__refactor___utils___position_to_index
+    src__reko__refactor___utils__write_module --> src__reko__refactor___utils__ensure_trailing_newline
+    src__reko__refactor__move__move_constants --> src__reko__refactor___utils__read_module
+    src__reko__refactor__move__move_constants --> src__reko__refactor__move___assignment_lines
+    src__reko__refactor__move__move_constants --> src__reko__refactor___utils__ensure_trailing_newline
+    src__reko__refactor__move__move_constants --> src__reko__refactor__move___remove_assignments
+    src__reko__refactor__move__move_constants --> src__reko__refactor___utils__write_module
+    src__reko__refactor__move__move_constants --> src__reko__config__load_config
+    src__reko__refactor__remove__remove_unused_constants --> src__reko__refactor___utils__read_module
+    src__reko__refactor__remove__remove_unused_constants --> src__reko__refactor___utils__module_level_names
+    src__reko__refactor__remove__remove_unused_constants --> src__reko__refactor___utils__collect_name_usages
+    src__reko__refactor__remove__remove_unused_constants --> src__reko__refactor___utils__write_module
+    src__reko__refactor__split___SplitFinder___insert_at --> src__reko__refactor__split___insert_index
+    src__reko__refactor__split___SplitFinder__finalize --> src__reko__refactor__split___contains_node
+    src__reko__refactor__split___split_dict_node --> src__reko__refactor___utils__unique_name
+    src__reko__refactor__split___split_dict_node --> src__reko__refactor___utils__to_upper_snake
+    src__reko__refactor__split___split_dict_node --> src__reko__refactor__split___make_assign
+    src__reko__refactor__split___split_list_node --> src__reko__refactor___utils__unique_name
+    src__reko__refactor__split___split_list_node --> src__reko__refactor___utils__to_upper_snake
+    src__reko__refactor__split___split_list_node --> src__reko__refactor__split___make_assign
+    src__reko__refactor__split__split_structures --> src__reko__refactor___utils__read_module
+    src__reko__refactor__split__split_structures --> src__reko__refactor__split___iter_scopes
+    src__reko__refactor__split__split_structures --> src__reko__refactor___utils__write_module
+    src__reko__refactor___ast_extract___ExtractCollector__visit_Constant --> src__reko__scanner__detector___is_magic_number
+    src__reko__refactor___ast_extract__build_extraction_plan --> src__reko__scanner__detector___suggest_constant_name
+    src__reko__refactor___ast_extract__build_extraction_plan --> src__reko__refactor___utils__unique_name
+    src__reko__refactor___ast_extract__transform_source --> src__reko__refactor___ast_extract__transform_module

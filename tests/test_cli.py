@@ -14,6 +14,12 @@ def test_cli_scan_table():
     assert "Hardcoded findings" in result.stdout
 
 
+def test_cli_remove_missing_file():
+    result = runner.invoke(app, ["remove", "src/constants.py", "--dry-run"])
+    assert result.exit_code == 1
+    assert "Plik nie istnieje" in result.stdout
+
+
 def test_cli_plan(tmp_path):
     output = tmp_path / "plan.yaml"
     result = runner.invoke(app, ["plan", str(FIXTURES), "--output", str(output)])

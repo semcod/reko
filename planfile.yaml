@@ -1,0 +1,448 @@
+name: Code Quality Improvement
+project_name: ''
+project_type: prefactoring
+domain: dev-tools
+goal: Improve code quality using prefact
+goals:
+- Fix all prefact-detected issues
+- Improve code maintainability
+- Ensure consistent code style
+quality_gates:
+- metric: Prefact Issues
+  threshold: '0'
+sprints:
+- id: sprint-1
+  name: Code Quality Improvements
+  duration: 2 weeks
+  objectives:
+  - Fix code quality issues
+  task_patterns:
+  - id: ticket-0667fda4
+    name: Fix ai-boilerplate issues
+    description: Resolve 1 ai-boilerplate issues in src/reko/__main__.py
+    task_type: prefactor
+    priority: medium
+    estimate: 1d
+    files:
+    - src/reko/__main__.py
+    rule_id: ai-boilerplate
+    count: 1
+    model_hints:
+      planning: balanced
+      implementation: balanced
+  - id: ticket-2d23d774
+    name: Fix unused-imports issues
+    description: Resolve 2 unused-imports issues in src/reko/__init__.py
+    task_type: prefactor
+    priority: medium
+    estimate: 1d
+    files:
+    - src/reko/__init__.py
+    rule_id: unused-imports
+    count: 2
+    model_hints:
+      planning: balanced
+      implementation: balanced
+  - id: ticket-86a3e5b9
+    name: Fix unused-imports issues
+    description: Resolve 2 unused-imports issues in src/reko/cli/main.py
+    task_type: prefactor
+    priority: medium
+    estimate: 1d
+    files:
+    - src/reko/cli/main.py
+    rule_id: unused-imports
+    count: 2
+    model_hints:
+      planning: balanced
+      implementation: balanced
+  - id: ticket-42824761
+    name: Fix magic-numbers issues
+    description: Resolve 4 magic-numbers issues in src/reko/cli/main.py
+    task_type: prefactor
+    priority: medium
+    estimate: 2d
+    files:
+    - src/reko/cli/main.py
+    rule_id: magic-numbers
+    count: 4
+    model_hints:
+      planning: balanced
+      implementation: balanced
+  - id: ticket-536cbb66
+    name: Fix ai-boilerplate issues
+    description: Resolve 1 ai-boilerplate issues in src/reko/cli/main.py
+    task_type: prefactor
+    priority: medium
+    estimate: 1d
+    files:
+    - src/reko/cli/main.py
+    rule_id: ai-boilerplate
+    count: 1
+    model_hints:
+      planning: balanced
+      implementation: balanced
+  - id: ticket-197e148c
+    name: Fix string-concat issues
+    description: Resolve 6 string-concat issues in src/reko/refactor/_ast_extract.py
+    task_type: prefactor
+    priority: high
+    estimate: 2d
+    files:
+    - src/reko/refactor/_ast_extract.py
+    rule_id: string-concat
+    count: 6
+    model_hints:
+      planning: balanced
+      implementation: balanced
+  - id: ticket-89afe2cd
+    name: Fix unused-imports issues
+    description: Resolve 2 unused-imports issues in src/reko/refactor/_ast_extract.py
+    task_type: prefactor
+    priority: medium
+    estimate: 1d
+    files:
+    - src/reko/refactor/_ast_extract.py
+    rule_id: unused-imports
+    count: 2
+    model_hints:
+      planning: balanced
+      implementation: balanced
+  - id: ticket-147926e7
+    name: Fix string-concat issues
+    description: Resolve 5 string-concat issues in src/reko/refactor/_utils.py
+    task_type: prefactor
+    priority: medium
+    estimate: 2d
+    files:
+    - src/reko/refactor/_utils.py
+    rule_id: string-concat
+    count: 5
+    model_hints:
+      planning: balanced
+      implementation: balanced
+  - id: ticket-e0d45a9e
+    name: Fix unused-imports issues
+    description: Resolve 2 unused-imports issues in src/reko/refactor/_utils.py
+    task_type: prefactor
+    priority: medium
+    estimate: 1d
+    files:
+    - src/reko/refactor/_utils.py
+    rule_id: unused-imports
+    count: 2
+    model_hints:
+      planning: balanced
+      implementation: balanced
+  - id: ticket-d64347fc
+    name: Fix unused-imports issues
+    description: Resolve 2 unused-imports issues in src/reko/refactor/engine.py
+    task_type: prefactor
+    priority: medium
+    estimate: 1d
+    files:
+    - src/reko/refactor/engine.py
+    rule_id: unused-imports
+    count: 2
+    model_hints:
+      planning: balanced
+      implementation: balanced
+  - id: ticket-1a6d1f16
+    name: Fix string-concat issues
+    description: Resolve 1 string-concat issues in src/reko/refactor/extract.py
+    task_type: prefactor
+    priority: medium
+    estimate: 1d
+    files:
+    - src/reko/refactor/extract.py
+    rule_id: string-concat
+    count: 1
+    model_hints:
+      planning: balanced
+      implementation: balanced
+  - id: ticket-b922a8ca
+    name: Fix unused-imports issues
+    description: Resolve 2 unused-imports issues in src/reko/refactor/extract.py
+    task_type: prefactor
+    priority: medium
+    estimate: 1d
+    files:
+    - src/reko/refactor/extract.py
+    rule_id: unused-imports
+    count: 2
+    model_hints:
+      planning: balanced
+      implementation: balanced
+  - id: ticket-ea8cb18d
+    name: Fix unused-imports issues
+    description: Resolve 2 unused-imports issues in src/reko/config.py
+    task_type: prefactor
+    priority: medium
+    estimate: 1d
+    files:
+    - src/reko/config.py
+    rule_id: unused-imports
+    count: 2
+    model_hints:
+      planning: balanced
+      implementation: balanced
+  - id: ticket-28b42651
+    name: Fix string-concat issues
+    description: Resolve 7 string-concat issues in src/reko/refactor/move.py
+    task_type: prefactor
+    priority: high
+    estimate: 2d
+    files:
+    - src/reko/refactor/move.py
+    rule_id: string-concat
+    count: 7
+    model_hints:
+      planning: balanced
+      implementation: balanced
+  - id: ticket-04d93ec8
+    name: Fix unused-imports issues
+    description: Resolve 2 unused-imports issues in src/reko/refactor/move.py
+    task_type: prefactor
+    priority: medium
+    estimate: 1d
+    files:
+    - src/reko/refactor/move.py
+    rule_id: unused-imports
+    count: 2
+    model_hints:
+      planning: balanced
+      implementation: balanced
+  - id: ticket-679c43e4
+    name: Fix string-concat issues
+    description: Resolve 1 string-concat issues in src/reko/refactor/remove.py
+    task_type: prefactor
+    priority: medium
+    estimate: 1d
+    files:
+    - src/reko/refactor/remove.py
+    rule_id: string-concat
+    count: 1
+    model_hints:
+      planning: balanced
+      implementation: balanced
+  - id: ticket-11918242
+    name: Fix unused-imports issues
+    description: Resolve 2 unused-imports issues in src/reko/refactor/remove.py
+    task_type: prefactor
+    priority: medium
+    estimate: 1d
+    files:
+    - src/reko/refactor/remove.py
+    rule_id: unused-imports
+    count: 2
+    model_hints:
+      planning: balanced
+      implementation: balanced
+  - id: ticket-34b4ee88
+    name: Fix string-concat issues
+    description: Resolve 1 string-concat issues in src/reko/models.py
+    task_type: prefactor
+    priority: medium
+    estimate: 1d
+    files:
+    - src/reko/models.py
+    rule_id: string-concat
+    count: 1
+    model_hints:
+      planning: balanced
+      implementation: balanced
+  - id: ticket-f0288fc8
+    name: Fix unused-imports issues
+    description: Resolve 2 unused-imports issues in src/reko/models.py
+    task_type: prefactor
+    priority: medium
+    estimate: 1d
+    files:
+    - src/reko/models.py
+    rule_id: unused-imports
+    count: 2
+    model_hints:
+      planning: balanced
+      implementation: balanced
+  - id: ticket-3b47be76
+    name: Fix unused-imports issues
+    description: Resolve 2 unused-imports issues in src/reko/reporters/json_reporter.py
+    task_type: prefactor
+    priority: medium
+    estimate: 1d
+    files:
+    - src/reko/reporters/json_reporter.py
+    rule_id: unused-imports
+    count: 2
+    model_hints:
+      planning: balanced
+      implementation: balanced
+  - id: ticket-adfadfb0
+    name: Fix smart-return-type issues
+    description: Resolve 2 smart-return-type issues in tests/fixtures/sample.py
+    task_type: prefactor
+    priority: medium
+    estimate: 1d
+    files:
+    - tests/fixtures/sample.py
+    rule_id: smart-return-type
+    count: 2
+    model_hints:
+      planning: balanced
+      implementation: balanced
+  - id: ticket-2de679dd
+    name: Fix string-concat issues
+    description: Resolve 1 string-concat issues in tests/fixtures/sample.py
+    task_type: prefactor
+    priority: medium
+    estimate: 1d
+    files:
+    - tests/fixtures/sample.py
+    rule_id: string-concat
+    count: 1
+    model_hints:
+      planning: balanced
+      implementation: balanced
+  - id: ticket-d19c4d7f
+    name: Fix magic-numbers issues
+    description: Resolve 3 magic-numbers issues in tests/fixtures/sample.py
+    task_type: prefactor
+    priority: medium
+    estimate: 1d
+    files:
+    - tests/fixtures/sample.py
+    rule_id: magic-numbers
+    count: 3
+    model_hints:
+      planning: balanced
+      implementation: balanced
+  - id: ticket-d35f9c4d
+    name: Fix string-concat issues
+    description: Resolve 1 string-concat issues in src/reko/refactor/split.py
+    task_type: prefactor
+    priority: medium
+    estimate: 1d
+    files:
+    - src/reko/refactor/split.py
+    rule_id: string-concat
+    count: 1
+    model_hints:
+      planning: balanced
+      implementation: balanced
+  - id: ticket-e8ab6580
+    name: Fix unused-imports issues
+    description: Resolve 2 unused-imports issues in src/reko/refactor/split.py
+    task_type: prefactor
+    priority: medium
+    estimate: 1d
+    files:
+    - src/reko/refactor/split.py
+    rule_id: unused-imports
+    count: 2
+    model_hints:
+      planning: balanced
+      implementation: balanced
+  - id: ticket-06bbd30d
+    name: Fix smart-return-type issues
+    description: Resolve 2 smart-return-type issues in tests/test_cli.py
+    task_type: prefactor
+    priority: medium
+    estimate: 1d
+    files:
+    - tests/test_cli.py
+    rule_id: smart-return-type
+    count: 2
+    model_hints:
+      planning: balanced
+      implementation: balanced
+  - id: ticket-b5d2908d
+    name: Fix string-concat issues
+    description: Resolve 2 string-concat issues in src/reko/scanner/detector.py
+    task_type: prefactor
+    priority: medium
+    estimate: 1d
+    files:
+    - src/reko/scanner/detector.py
+    rule_id: string-concat
+    count: 2
+    model_hints:
+      planning: balanced
+      implementation: balanced
+  - id: ticket-23f58514
+    name: Fix unused-imports issues
+    description: Resolve 2 unused-imports issues in src/reko/scanner/detector.py
+    task_type: prefactor
+    priority: medium
+    estimate: 1d
+    files:
+    - src/reko/scanner/detector.py
+    rule_id: unused-imports
+    count: 2
+    model_hints:
+      planning: balanced
+      implementation: balanced
+  - id: ticket-c63b1916
+    name: Fix magic-numbers issues
+    description: Resolve 7 magic-numbers issues in src/reko/scanner/detector.py
+    task_type: prefactor
+    priority: high
+    estimate: 2d
+    files:
+    - src/reko/scanner/detector.py
+    rule_id: magic-numbers
+    count: 7
+    model_hints:
+      planning: balanced
+      implementation: balanced
+  - id: ticket-f5104d30
+    name: Fix smart-return-type issues
+    description: Resolve 3 smart-return-type issues in tests/test_detector.py
+    task_type: prefactor
+    priority: medium
+    estimate: 1d
+    files:
+    - tests/test_detector.py
+    rule_id: smart-return-type
+    count: 3
+    model_hints:
+      planning: balanced
+      implementation: balanced
+  - id: ticket-a9aca8a7
+    name: Fix smart-return-type issues
+    description: Resolve 1 smart-return-type issues in tests/test_examples_e2e.py
+    task_type: prefactor
+    priority: medium
+    estimate: 1d
+    files:
+    - tests/test_examples_e2e.py
+    rule_id: smart-return-type
+    count: 1
+    model_hints:
+      planning: balanced
+      implementation: balanced
+  - id: ticket-80f3da79
+    name: Fix unused-imports issues
+    description: Resolve 6 unused-imports issues in tests/test_examples_e2e.py
+    task_type: prefactor
+    priority: high
+    estimate: 2d
+    files:
+    - tests/test_examples_e2e.py
+    rule_id: unused-imports
+    count: 6
+    model_hints:
+      planning: balanced
+      implementation: balanced
+  - id: ticket-7fecfff1
+    name: Fix smart-return-type issues
+    description: Resolve 5 smart-return-type issues in tests/test_refactor.py
+    task_type: prefactor
+    priority: medium
+    estimate: 2d
+    files:
+    - tests/test_refactor.py
+    rule_id: smart-return-type
+    count: 5
+    model_hints:
+      planning: balanced
+      implementation: balanced

@@ -1,0 +1,129 @@
+# code2llm | 27f 2312L | python:23,shell:2,yaml:1,toml:1 | 2026-06-17
+# generated in 0.00s
+# CC̅=3.7 | critical:2/88 | dups:0 | cycles:0
+
+HEALTH[2]:
+  🟡 CC    extract_constants CC=15 (limit:15)
+  🟡 CC    remove_unused_constants CC=16 (limit:15)
+
+REFACTOR[1]:
+  1. split 2 high-CC methods  (CC>15)
+
+PIPELINES[38]:
+  [1] Src [main]: main → prepare_workdir
+      PURITY: 100% pure
+  [2] Src [build_url]: build_url
+      PURITY: 100% pure
+  [3] Src [fetch_users]: fetch_users
+      PURITY: 100% pure
+  [4] Src [fetch_orders]: fetch_orders
+      PURITY: 100% pure
+  [5] Src [scan]: scan → load_config → _load_toml
+      PURITY: 100% pure
+  [6] Src [extract]: extract → load_config → _load_toml
+      PURITY: 100% pure
+  [7] Src [split]: split → split_structures → read_module
+      PURITY: 100% pure
+  [8] Src [move_cmd]: move_cmd → move_constants → read_module
+      PURITY: 100% pure
+  [9] Src [remove]: remove → remove_unused_constants → read_module
+      PURITY: 100% pure
+  [10] Src [apply]: apply → apply_plan → extract_constants → _group_target_path
+      PURITY: 100% pure
+  [11] Src [plan_cmd]: plan_cmd → load_config → _load_toml
+      PURITY: 100% pure
+  [12] Src [__init__]: __init__
+      PURITY: 100% pure
+  [13] Src [visit_JoinedStr]: visit_JoinedStr
+      PURITY: 100% pure
+  [14] Src [visit_Module]: visit_Module
+      PURITY: 100% pure
+  [15] Src [visit_FunctionDef]: visit_FunctionDef
+      PURITY: 100% pure
+  [16] Src [visit_AsyncFunctionDef]: visit_AsyncFunctionDef
+      PURITY: 100% pure
+  [17] Src [visit_ClassDef]: visit_ClassDef
+      PURITY: 100% pure
+  [18] Src [visit_Constant]: visit_Constant → _is_magic_number
+      PURITY: 100% pure
+  [19] Src [visit_Dict]: visit_Dict → _literal_size
+      PURITY: 100% pure
+  [20] Src [visit_List]: visit_List → _literal_size
+      PURITY: 100% pure
+  [21] Src [_line_offsets]: _line_offsets
+      PURITY: 100% pure
+  [22] Src [apply_replacements]: apply_replacements → _position_to_index
+      PURITY: 100% pure
+  [23] Src [_literal_size]: _literal_size
+      PURITY: 100% pure
+  [24] Src [visit]: visit
+      PURITY: 100% pure
+  [25] Src [visit_Module]: visit_Module
+      PURITY: 100% pure
+  [26] Src [visit_FunctionDef]: visit_FunctionDef
+      PURITY: 100% pure
+  [27] Src [visit_AsyncFunctionDef]: visit_AsyncFunctionDef
+      PURITY: 100% pure
+  [28] Src [visit_Dict]: visit_Dict
+      PURITY: 100% pure
+  [29] Src [visit_List]: visit_List
+      PURITY: 100% pure
+  [30] Src [_insert_at]: _insert_at → _insert_index
+      PURITY: 100% pure
+  [31] Src [finalize]: finalize → _contains_node
+      PURITY: 100% pure
+  [32] Src [__init__]: __init__
+      PURITY: 100% pure
+  [33] Src [visit_JoinedStr]: visit_JoinedStr
+      PURITY: 100% pure
+  [34] Src [visit_FunctionDef]: visit_FunctionDef
+      PURITY: 100% pure
+  [35] Src [visit_AsyncFunctionDef]: visit_AsyncFunctionDef
+      PURITY: 100% pure
+  [36] Src [visit_ClassDef]: visit_ClassDef
+      PURITY: 100% pure
+  [37] Src [visit_Constant]: visit_Constant → _is_magic_number
+      PURITY: 100% pure
+  [38] Src [visit_Constant]: visit_Constant
+      PURITY: 100% pure
+
+LAYERS:
+  src/                            CC̄=3.9    ←in:0  →out:0
+  │ detector                   260L  1C   17m  CC=10     ←2
+  │ split                      224L  2C   19m  CC=14     ←2
+  │ main                       172L  0C    8m  CC=5      ←0
+  │ _ast_extract               165L  5C   13m  CC=14     ←1
+  │ config                     104L  5C    3m  CC=5      ←5
+  │ move                       103L  0C    4m  CC=8      ←2
+  │ _utils                     101L  1C   10m  CC=7      ←5
+  │ models                      82L  7C    0m  CC=0.0    ←0
+  │ !! extract                     75L  0C    2m  CC=15     ←2
+  │ !! remove                      70L  0C    1m  CC=16     ←2
+  │ engine                      45L  0C    1m  CC=8      ←1
+  │ json_reporter               41L  0C    2m  CC=2      ←1
+  │ __init__                    39L  0C    0m  CC=0.0    ←0
+  │ __main__                     6L  0C    0m  CC=0.0    ←0
+  │ __init__                     1L  0C    0m  CC=0.0    ←0
+  │ __init__                     1L  0C    0m  CC=0.0    ←0
+  │ __init__                     1L  0C    0m  CC=0.0    ←0
+  │ __init__                     1L  0C    0m  CC=0.0    ←0
+  │ __init__                     1L  0C    0m  CC=0.0    ←0
+  │
+  examples/                       CC̄=2.5    ←in:0  →out:0
+  │ run_all                     67L  0C    3m  CC=4      ←0
+  │ before                      34L  0C    3m  CC=4      ←0
+  │ before                      25L  0C    1m  CC=1      ←0
+  │ before                      12L  0C    1m  CC=1      ←0
+  │
+  ./                              CC̄=0.0    ←in:0  →out:0
+  │ !! goal.yaml                  511L  0C    0m  CC=0.0    ←0
+  │ pyproject.toml             107L  0C    0m  CC=0.0    ←0
+  │ project.sh                  63L  0C    0m  CC=0.0    ←0
+  │ tree.sh                      1L  0C    0m  CC=0.0    ←0
+  │
+
+COUPLING: no cross-package imports detected
+
+EXTERNAL:
+  validation: run `vallm batch .` → validation.toon
+  duplication: run `redup scan .` → duplication.toon

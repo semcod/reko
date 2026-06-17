@@ -1,0 +1,188 @@
+# reko | 31f 2029L | python:28,shell:2,less:1 | 2026-06-17
+# stats: 79 func | 21 cls | 31 mod | CC̄=4.1 | critical:6 | cycles:0
+# alerts[5]: CC remove_unused_constants=16; CC extract_constants=15; CC insert_import=14; CC split_structures=14; CC test_examples_workflow_produces_valid_python=12
+# hotspots[5]: split_structures fan=27; move_constants fan=19; plan_cmd fan=17; extract_constants fan=16; remove_unused_constants fan=15
+# evolution: baseline
+# Keys: M=modules, D=details, i=imports, e=exports, c=classes, f=functions, m=methods
+M[31]:
+  app.doql.less,74
+  examples/01-hardcoded-api/before.py,35
+  examples/02-inline-config/before.py,26
+  examples/03-unused-constants/before.py,13
+  examples/run_all.py,68
+  project.sh,63
+  src/reko/__init__.py,40
+  src/reko/__main__.py,7
+  src/reko/cli/__init__.py,2
+  src/reko/cli/main.py,194
+  src/reko/config.py,105
+  src/reko/models.py,83
+  src/reko/refactor/__init__.py,2
+  src/reko/refactor/_ast_extract.py,166
+  src/reko/refactor/_utils.py,118
+  src/reko/refactor/engine.py,46
+  src/reko/refactor/extract.py,76
+  src/reko/refactor/move.py,104
+  src/reko/refactor/remove.py,71
+  src/reko/refactor/split.py,225
+  src/reko/reporters/__init__.py,2
+  src/reko/reporters/json_reporter.py,42
+  src/reko/scanner/__init__.py,2
+  src/reko/scanner/detector.py,261
+  src/reko/writers/__init__.py,2
+  tests/fixtures/sample.py,24
+  tests/test_cli.py,28
+  tests/test_detector.py,29
+  tests/test_examples_e2e.py,54
+  tests/test_refactor.py,65
+  tree.sh,2
+D:
+  examples/01-hardcoded-api/before.py:
+    e: fetch_users,fetch_orders,is_premium
+    fetch_users(page)
+    fetch_orders(user_id)
+    is_premium(total)
+  examples/02-inline-config/before.py:
+    e: get_settings
+    get_settings()
+  examples/03-unused-constants/before.py:
+    e: build_url
+    build_url(path)
+  examples/run_all.py:
+    e: run,prepare_workdir,main
+    run(cmd)
+    prepare_workdir()
+    main()
+  src/reko/__init__.py:
+  src/reko/__main__.py:
+  src/reko/cli/__init__.py:
+  src/reko/cli/main.py:
+    e: _require_python_file,_print_findings,scan,extract,split,move_cmd,remove,apply,plan_cmd
+    _require_python_file(path)
+    _print_findings(report)
+    scan(path;format;output)
+    extract(path;target;dry_run)
+    split(path;dry_run)
+    move_cmd(source;target;names;dry_run)
+    remove(path;dry_run)
+    apply(plan;dry_run)
+    plan_cmd(path;output)
+  src/reko/config.py:
+    e: _load_yaml,_load_toml,load_config,ScanConfig,ExtractConfig,SplitConfig,MoveConfig,RekoConfig
+    ScanConfig:
+    ExtractConfig:
+    SplitConfig:
+    MoveConfig:
+    RekoConfig:
+    _load_yaml(path)
+    _load_toml(path)
+    load_config(root)
+  src/reko/models.py:
+    e: FindingKind,RefactorAction,Finding,ScanReport,RefactorChange,RefactorPlan,RefactorResult
+    FindingKind:
+    RefactorAction:
+    Finding:
+    ScanReport: by_kind(0)
+    RefactorChange:
+    RefactorPlan:
+    RefactorResult:
+  src/reko/refactor/__init__.py:
+  src/reko/refactor/_ast_extract.py:
+    e: build_extraction_plan,transform_module,transform_source,insert_import,ExtractableNode,ExtractionPlan,_InsideJoinedStr,_ExtractCollector,_ExtractTransformer
+    ExtractableNode:
+    ExtractionPlan:
+    _InsideJoinedStr: __init__(0),visit_JoinedStr(1)
+    _ExtractCollector: __init__(2),visit_FunctionDef(1),visit_AsyncFunctionDef(1),visit_ClassDef(1),visit_Constant(1)
+    _ExtractTransformer: __init__(1),visit_Constant(1)
+    build_extraction_plan(tree;config)
+    transform_module(tree;plan)
+    transform_source(source;plan;tree)
+    insert_import(source;module;names)
+  src/reko/refactor/_utils.py:
+    e: _line_offsets,_position_to_index,apply_replacements,unique_name,to_upper_snake,ensure_trailing_newline,require_python_file,read_module,write_module,module_level_names,collect_name_usages,Replacement
+    Replacement:
+    _line_offsets(source)
+    _position_to_index(source;line;col)
+    apply_replacements(source;replacements)
+    unique_name(base;existing)
+    to_upper_snake(name)
+    ensure_trailing_newline(text)
+    require_python_file(path)
+    read_module(path)
+    write_module(path;source;dry_run)
+    module_level_names(tree)
+    collect_name_usages(tree;names)
+  src/reko/refactor/engine.py:
+    e: apply_plan
+    apply_plan(plan_path)
+  src/reko/refactor/extract.py:
+    e: _group_target_path,extract_constants
+    _group_target_path(source;target;config)
+    extract_constants(source)
+  src/reko/refactor/move.py:
+    e: _assignment_lines,_remove_assignments,_ensure_import,move_constants
+    _assignment_lines(source;tree;names)
+    _remove_assignments(source;tree;names)
+    _ensure_import(source;module;names)
+    move_constants(source;target)
+  src/reko/refactor/remove.py:
+    e: remove_unused_constants
+    remove_unused_constants(source)
+  src/reko/refactor/split.py:
+    e: _parent_map,_contains_node,_literal_size,_key_name,_make_assign,_split_dict_node,_split_list_node,_insert_index,split_structures,_iter_scopes,_SplitTarget,_SplitFinder
+    _SplitTarget:
+    _SplitFinder: __init__(1),visit(1),visit_Module(1),visit_FunctionDef(1),visit_AsyncFunctionDef(1),visit_Dict(1),visit_List(1),_insert_at(1),finalize(0)
+    _parent_map(tree)
+    _contains_node(parent;child)
+    _literal_size(node)
+    _key_name(key;index)
+    _make_assign(name;value)
+    _split_dict_node(node;prefix;used)
+    _split_list_node(node;prefix;used)
+    _insert_index(scope)
+    split_structures(source)
+    _iter_scopes(tree)
+  src/reko/reporters/__init__.py:
+  src/reko/reporters/json_reporter.py:
+    e: report_to_dict,write_report
+    report_to_dict(report)
+    write_report(report;output;fmt)
+  src/reko/scanner/__init__.py:
+  src/reko/scanner/detector.py:
+    e: _should_exclude,_is_magic_number,_suggest_constant_name,_literal_size,_get_source_segment,scan_file,_collect_literal_hashes,scan_project,_HardcodeVisitor
+    _HardcodeVisitor: __init__(3),visit_JoinedStr(1),visit_Module(1),visit_FunctionDef(1),visit_AsyncFunctionDef(1),visit_ClassDef(1),visit_Constant(1),visit_Dict(1),visit_List(1)
+    _should_exclude(path;root;patterns)
+    _is_magic_number(value;config)
+    _suggest_constant_name(value;kind)
+    _literal_size(node)
+    _get_source_segment(source;node)
+    scan_file(path;config)
+    _collect_literal_hashes(findings)
+    scan_project(root;config)
+  src/reko/writers/__init__.py:
+  tests/fixtures/sample.py:
+    e: process,greet
+    process(value)
+    greet()
+  tests/test_cli.py:
+    e: test_cli_scan_table,test_cli_remove_missing_file
+    test_cli_scan_table()
+    test_cli_remove_missing_file()
+  tests/test_detector.py:
+    e: test_scan_file_detects_magic_number_and_string,test_scan_file_detects_inline_dict_and_list,test_scan_project_returns_report
+    test_scan_file_detects_magic_number_and_string()
+    test_scan_file_detects_inline_dict_and_list()
+    test_scan_project_returns_report()
+  tests/test_examples_e2e.py:
+    e: _run,setup_module,test_examples_workflow_produces_valid_python
+    _run(cmd)
+    setup_module()
+    test_examples_workflow_produces_valid_python()
+  tests/test_refactor.py:
+    e: _copy_fixture,test_extract_constants_dry_run,test_extract_constants_apply,test_split_structures_apply,test_remove_unused_constants,test_move_constants
+    _copy_fixture(tmp_path;name)
+    test_extract_constants_dry_run(tmp_path)
+    test_extract_constants_apply(tmp_path)
+    test_split_structures_apply(tmp_path)
+    test_remove_unused_constants(tmp_path)
+    test_move_constants(tmp_path)
