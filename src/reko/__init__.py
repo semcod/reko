@@ -1,5 +1,5 @@
 """reko — refaktoryzacja hardkodowanych wartości w kodzie Python."""
-__version__ = "0.1.3"
+__version__ = "0.1.4"
 
 from reko.config import RekoConfig, load_config
 from reko.models import (

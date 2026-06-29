@@ -13,7 +13,7 @@
 
 version: '1.0'
 project:
-  name: reko
+  name: reku
   type:
   - python
   description: Refaktoryzacja hardkodowanych wartości, struktur i kodu w projektach
@@ -239,7 +239,7 @@ strategies:
   python:
     test: pytest tests/ -v
     build: python -m build
-    publish: twine upload dist/reko-{version}*
+    publish: twine upload dist/reku-{version}*
     publish_enabled: true
     dependencies:
       file: requirements.txt
