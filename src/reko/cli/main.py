@@ -1,7 +1,5 @@
 """CLI dla reko."""
 
-from __future__ import annotations
-
 import json
 from pathlib import Path
 
@@ -27,6 +25,8 @@ app = typer.Typer(
 )
 console = Console()
 
+_MAX_TABLE_ROWS = 200
+
 
 def _require_python_file(path: Path) -> Path:
     try:
@@ -51,7 +51,7 @@ def _print_findings(report) -> None:
     table.add_column("File")
     table.add_column("Line")
     table.add_column("Message")
-    for finding in report.findings[:200]:
+    for finding in report.findings[:_MAX_TABLE_ROWS]:
         rel = finding.file
         try:
             rel = finding.file.relative_to(report.root)
@@ -59,8 +59,8 @@ def _print_findings(report) -> None:
             pass
         table.add_row(finding.kind.value, str(rel), str(finding.line), finding.message)
     console.print(table)
-    if len(report.findings) > 200:
-        console.print(f"[dim]... and {len(report.findings) - 200} more[/dim]")
+    if len(report.findings) > _MAX_TABLE_ROWS:
+        console.print(f"[dim]... and {len(report.findings) - _MAX_TABLE_ROWS} more[/dim]")
     console.print(
         f"\nScanned {report.files_scanned} files, found {len(report.findings)} issues."
     )

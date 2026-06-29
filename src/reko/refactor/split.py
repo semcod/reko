@@ -1,7 +1,4 @@
 """Rozbijanie dużych struktur inline na mniejsze stałe."""
-
-from __future__ import annotations
-
 import ast
 from dataclasses import dataclass
 from pathlib import Path
@@ -9,38 +6,28 @@ from pathlib import Path
 from reko.config import RekoConfig, load_config
 from reko.models import RefactorAction, RefactorChange, RefactorPlan, RefactorResult
 from reko.refactor._utils import ensure_trailing_newline, read_module, to_upper_snake, unique_name, write_module
-
-
 @dataclass
 class _SplitTarget:
     node: ast.Dict | ast.List
     scope: ast.Module | ast.FunctionDef | ast.AsyncFunctionDef
     insert_at: int
-
-
 def _parent_map(tree: ast.AST) -> dict[ast.AST, ast.AST]:
     parents: dict[ast.AST, ast.AST] = {}
     for node in ast.walk(tree):
         for child in ast.iter_child_nodes(node):
             parents[child] = node
     return parents
-
-
 def _contains_node(parent: ast.AST, child: ast.AST) -> bool:
     for node in ast.walk(parent):
         if node is child:
             return True
     return False
-
-
 def _literal_size(node: ast.AST) -> int:
     if isinstance(node, ast.Dict):
         return len(node.keys)
     if isinstance(node, ast.List):
         return len(node.elts)
     return 0
-
-
 class _SplitFinder(ast.NodeVisitor):
     def __init__(self, config: RekoConfig) -> None:
         self.config = config
@@ -98,18 +85,12 @@ class _SplitFinder(ast.NodeVisitor):
                 if outer is not inner and _contains_node(outer, inner):
                     nested_ids.add(id(inner))
         self.targets = [target for target in self.targets if id(target.node) not in nested_ids]
-
-
 def _key_name(key: ast.AST | None, index: int) -> str:
     if isinstance(key, ast.Constant) and isinstance(key.value, str):
         return key.value
     return f"KEY_{index}"
-
-
 def _make_assign(name: str, value: ast.AST) -> ast.Assign:
     return ast.Assign(targets=[ast.Name(id=name, ctx=ast.Store())], value=value)
-
-
 def _split_dict_node(node: ast.Dict, prefix: str, used: set[str]) -> tuple[ast.Dict, list[ast.Assign]]:
     keys: list[ast.AST | None] = []
     values: list[ast.AST] = []
@@ -125,8 +106,6 @@ def _split_dict_node(node: ast.Dict, prefix: str, used: set[str]) -> tuple[ast.D
         values.append(ast.Name(id=part_name, ctx=ast.Load()))
 
     return ast.Dict(keys=keys, values=values), assignments
-
-
 def _split_list_node(node: ast.List, prefix: str, used: set[str]) -> tuple[ast.List, list[ast.Assign]]:
     names: list[ast.AST] = []
     assignments: list[ast.Assign] = []
@@ -136,15 +115,11 @@ def _split_list_node(node: ast.List, prefix: str, used: set[str]) -> tuple[ast.L
         assignments.append(_make_assign(part_name, elt))
         names.append(ast.Name(id=part_name, ctx=ast.Load()))
     return ast.List(elts=names, ctx=ast.Load()), assignments
-
-
 def _insert_index(scope: ast.Module | ast.FunctionDef | ast.AsyncFunctionDef) -> int:
     for index, stmt in enumerate(scope.body):
         if isinstance(stmt, ast.Return):
             return index
     return len(scope.body)
-
-
 def split_structures(
     source: Path,
     *,
@@ -197,7 +172,7 @@ def split_structures(
             scope.body[insert_at:insert_at] = assignments
 
     ast.fix_missing_locations(tree)
-    final_source = ast.unparse(tree) + "\n"
+    final_source = f"{ast.unparse(tree)}\n"
     write_module(source, ensure_trailing_newline(final_source), dry_run)
 
     return RefactorResult(
@@ -214,8 +189,6 @@ def split_structures(
         ),
         modified_files=[source],
     )
-
-
 def _iter_scopes(tree: ast.Module) -> list[ast.Module | ast.FunctionDef | ast.AsyncFunctionDef]:
     scopes: list[ast.Module | ast.FunctionDef | ast.AsyncFunctionDef] = [tree]
     for node in ast.walk(tree):

@@ -1,7 +1,4 @@
 """Silnik stosujący plany refaktoryzacji."""
-
-from __future__ import annotations
-
 from pathlib import Path
 
 import yaml
@@ -11,8 +8,6 @@ from reko.refactor.extract import extract_constants
 from reko.refactor.move import move_constants
 from reko.refactor.remove import remove_unused_constants
 from reko.refactor.split import split_structures
-
-
 def apply_plan(plan_path: Path, *, dry_run: bool = True) -> RefactorResult:
     raw = yaml.safe_load(plan_path.read_text(encoding="utf-8")) or {}
     plan = RefactorPlan.model_validate(raw)

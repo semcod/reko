@@ -1,7 +1,4 @@
 """AST-based extraction of hardcoded literals."""
-
-from __future__ import annotations
-
 import ast
 from dataclasses import dataclass, field
 
@@ -9,21 +6,15 @@ from reko.config import ScanConfig
 from reko.models import FindingKind
 from reko.refactor._utils import to_upper_snake, unique_name
 from reko.scanner.detector import _is_magic_number, _suggest_constant_name
-
-
 @dataclass
 class ExtractableNode:
     node: ast.Constant
     kind: FindingKind
     value_repr: str
-
-
 @dataclass
 class ExtractionPlan:
     replacements: dict[int, str] = field(default_factory=dict)
     constants: list[tuple[str, str]] = field(default_factory=list)
-
-
 class _InsideJoinedStr(ast.NodeVisitor):
     def __init__(self) -> None:
         self.ids: set[int] = set()
@@ -33,8 +24,6 @@ class _InsideJoinedStr(ast.NodeVisitor):
             if isinstance(value, ast.Constant):
                 self.ids.add(id(value))
         self.generic_visit(node)
-
-
 class _ExtractCollector(ast.NodeVisitor):
     def __init__(self, config: ScanConfig, skip_ids: set[int]) -> None:
         self.config = config
@@ -70,8 +59,6 @@ class _ExtractCollector(ast.NodeVisitor):
             self.items.append(
                 ExtractableNode(node, FindingKind.STRING_LITERAL, repr(node.value))
             )
-
-
 class _ExtractTransformer(ast.NodeTransformer):
     def __init__(self, replacements: dict[int, str]) -> None:
         self.replacements = replacements
@@ -81,8 +68,6 @@ class _ExtractTransformer(ast.NodeTransformer):
         if name:
             return ast.Name(id=name, ctx=ast.Load())
         return node
-
-
 def build_extraction_plan(
     tree: ast.Module,
     config: ScanConfig,
@@ -120,19 +105,13 @@ def build_extraction_plan(
         plan.constants.append((name, item.value_repr))
 
     return plan
-
-
 def transform_module(tree: ast.Module, plan: ExtractionPlan) -> str:
     transformed = _ExtractTransformer(plan.replacements).visit(tree)
     ast.fix_missing_locations(transformed)
-    return ast.unparse(transformed) + "\n"
-
-
+    return f"{ast.unparse(transformed)}\n"
 def transform_source(source: str, plan: ExtractionPlan, tree: ast.Module | None = None) -> str:
     module = tree or ast.parse(source)
     return transform_module(module, plan)
-
-
 def insert_import(source: str, module: str, names: list[str]) -> str:
     if not names:
         return source
@@ -162,4 +141,4 @@ def insert_import(source: str, module: str, names: list[str]) -> str:
         if hasattr(node, "end_lineno") and node.end_lineno:
             line_idx = node.end_lineno
             offset = sum(len(lines[i]) for i in range(line_idx))
-    return source[:offset] + import_line + source[offset:]
+    return f"{source[:offset]}{import_line}{source[offset:]}"

@@ -1,7 +1,4 @@
 """Wyciąganie hardkodowanych wartości do modułu stałych."""
-
-from __future__ import annotations
-
 import ast
 from pathlib import Path
 
@@ -9,14 +6,10 @@ from reko.config import RekoConfig, load_config
 from reko.models import FindingKind, RefactorAction, RefactorChange, RefactorPlan, RefactorResult
 from reko.refactor._ast_extract import build_extraction_plan, insert_import, transform_source
 from reko.refactor._utils import ensure_trailing_newline, read_module, write_module
-
-
 def _group_target_path(source: Path, target: Path | None, config: RekoConfig) -> Path:
     if target is not None:
         return target
     return source.parent / config.extract.target
-
-
 def extract_constants(
     source: Path,
     *,
@@ -51,7 +44,7 @@ def extract_constants(
         updated_source = insert_import(updated_source, target_path.stem, [name for name, _ in plan.constants])
 
     new_constants = "".join(f"{name} = {value_repr}\n" for name, value_repr in plan.constants)
-    updated_target = ensure_trailing_newline(target_text + new_constants)
+    updated_target = ensure_trailing_newline(f"{target_text}{new_constants}")
 
     write_module(source, updated_source, dry_run)
     write_module(target_path, updated_target, dry_run)

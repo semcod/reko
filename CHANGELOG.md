@@ -5,44 +5,40 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [0.1.10] - 2026-06-17
+## [Unreleased]
+
+## [0.1.3] - 2026-06-29
+
+### Docs
+- Update CHANGELOG.md
+- Update README.md
+
+### Test
+- Update tests/test_cli.py
+- Update tests/test_detector.py
+- Update tests/test_examples_e2e.py
+- Update tests/test_refactor.py
+
+### Other
+- Update prefact.yaml
+
+## [0.1.11] - 2026-06-17
 
 ### Fixed
-- Fix ai-boilerplate issues (ticket-0667fda4)
-- Fix unused-imports issues (ticket-2d23d774)
-- Fix unused-imports issues (ticket-86a3e5b9)
-- Fix magic-numbers issues (ticket-42824761)
-- Fix ai-boilerplate issues (ticket-536cbb66)
-- Fix string-concat issues (ticket-197e148c)
-- Fix unused-imports issues (ticket-89afe2cd)
-- Fix string-concat issues (ticket-147926e7)
-- Fix unused-imports issues (ticket-e0d45a9e)
-- Fix unused-imports issues (ticket-d64347fc)
-- Fix string-concat issues (ticket-1a6d1f16)
-- Fix unused-imports issues (ticket-b922a8ca)
-- Fix unused-imports issues (ticket-ea8cb18d)
-- Fix string-concat issues (ticket-28b42651)
-- Fix unused-imports issues (ticket-04d93ec8)
-- Fix string-concat issues (ticket-679c43e4)
-- Fix unused-imports issues (ticket-11918242)
-- Fix string-concat issues (ticket-34b4ee88)
-- Fix unused-imports issues (ticket-f0288fc8)
-- Fix unused-imports issues (ticket-3b47be76)
-- Fix smart-return-type issues (ticket-adfadfb0)
-- Fix string-concat issues (ticket-2de679dd)
-- Fix magic-numbers issues (ticket-d19c4d7f)
-- Fix string-concat issues (ticket-d35f9c4d)
-- Fix unused-imports issues (ticket-e8ab6580)
-- Fix smart-return-type issues (ticket-06bbd30d)
-- Fix string-concat issues (ticket-b5d2908d)
-- Fix unused-imports issues (ticket-23f58514)
-- Fix magic-numbers issues (ticket-c63b1916)
-- Fix smart-return-type issues (ticket-f5104d30)
-- Fix smart-return-type issues (ticket-a9aca8a7)
-- Fix unused-imports issues (ticket-80f3da79)
-- Fix smart-return-type issues (ticket-7fecfff1)
+- Naprawiono fałszywe wpisy CHANGELOG z wersji 0.1.10 (tickety planfile nie były wtedy wykonane)
+- Usunięto `from __future__ import annotations` powodujące fałszywe alarmy prefact
+- Zamieniono konkatenacje stringów na f-stringi w modułach refactor/
+- Dodano `_MAX_TABLE_ROWS` w CLI zamiast magic number 200
+- Dodano adnotacje `-> None` w testach
+- Lepszy komunikat błędu gdy plik nie istnieje (`reko remove`)
 
-## [Unreleased]
+### Changed
+- Zaktualizowano `prefact.yaml`: wykluczenie `examples/`, `tests/fixtures/`, reguł ai-boilerplate
+
+## [0.1.10] - 2026-06-17
+
+### Docs
+- Wygenerowano planfile.yaml i artefakty analizy (prefact/code2llm) — refaktoryzacja kodu wykonana dopiero w 0.1.11
 
 ## [0.1.2] - 2026-06-17
 

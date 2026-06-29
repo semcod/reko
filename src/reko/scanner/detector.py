@@ -1,7 +1,4 @@
 """Wykrywanie hardkodowanych wartości w kodzie Python."""
-
-from __future__ import annotations
-
 import ast
 import fnmatch
 import hashlib
@@ -15,8 +12,6 @@ from reko.models import Finding, FindingKind, ScanReport
 _URL_PATTERN = re.compile(r"^https?://")
 _PATH_PATTERN = re.compile(r"^(/|[A-Za-z]:\\|\./|\../)")
 _ENV_PATTERN = re.compile(r"^[A-Z][A-Z0-9_]+$")
-
-
 def _should_exclude(path: Path, root: Path, patterns: list[str]) -> bool:
     rel = str(path.relative_to(root)).replace("\\", "/")
     name = path.name
@@ -24,8 +19,6 @@ def _should_exclude(path: Path, root: Path, patterns: list[str]) -> bool:
         if fnmatch.fnmatch(name, pattern) or fnmatch.fnmatch(rel, pattern):
             return True
     return False
-
-
 def _is_magic_number(value: int | float, config: ScanConfig) -> bool:
     if value in config.allowed_numbers:
         return False
@@ -36,8 +29,6 @@ def _is_magic_number(value: int | float, config: ScanConfig) -> bool:
     if isinstance(value, int) and value > 0 and (value & (value - 1)) == 0:
         return False
     return True
-
-
 def _suggest_constant_name(value: str | int | float, kind: FindingKind) -> str:
     if kind == FindingKind.MAGIC_NUMBER:
         return f"VALUE_{str(value).replace('.', '_').replace('-', 'NEG_')}"
@@ -59,16 +50,12 @@ def _suggest_constant_name(value: str | int | float, kind: FindingKind) -> str:
     if kind == FindingKind.STRING_LITERAL:
         return f"STR_{name}"[:48]
     return name[:48]
-
-
 def _literal_size(node: ast.AST) -> int:
     if isinstance(node, ast.Dict):
         return len(node.keys)
     if isinstance(node, (ast.List, ast.Set, ast.Tuple)):
         return len(node.elts)
     return 0
-
-
 def _get_source_segment(source: str, node: ast.AST) -> str | None:
     if not hasattr(node, "lineno") or not hasattr(node, "end_lineno"):
         return None
@@ -174,7 +161,7 @@ class _HardcodeVisitor(ast.NodeVisitor):
                     col=node.col_offset,
                     end_line=getattr(node, "end_lineno", node.lineno),
                     end_col=getattr(node, "end_col_offset", None),
-                    value_repr=segment[:120] + ("..." if len(segment) > 120 else ""),
+                    value_repr=f"{segment[:120]}{'...' if len(segment) > 120 else ''}",
                     message=f"Inline dict with {size} keys",
                     suggested_name="CONFIG_DICT",
                     metadata={"keys": size},

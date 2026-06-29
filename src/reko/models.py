@@ -1,14 +1,9 @@
 """Modele danych dla reko."""
-
-from __future__ import annotations
-
 from enum import Enum
 from pathlib import Path
 from typing import Any
 
 from pydantic import BaseModel, Field
-
-
 class FindingKind(str, Enum):
     MAGIC_NUMBER = "magic_number"
     STRING_LITERAL = "string_literal"
@@ -19,8 +14,6 @@ class FindingKind(str, Enum):
     REPEATED_LITERAL = "repeated_literal"
     UNUSED_CONSTANT = "unused_constant"
     INLINE_STRUCTURE = "inline_structure"
-
-
 class RefactorAction(str, Enum):
     EXTRACT = "extract"
     SPLIT = "split"
@@ -28,8 +21,6 @@ class RefactorAction(str, Enum):
     REMOVE = "remove"
     INLINE = "inline"
     REPLACE = "replace"
-
-
 class Finding(BaseModel):
     kind: FindingKind
     file: Path
@@ -45,8 +36,6 @@ class Finding(BaseModel):
     metadata: dict[str, Any] = Field(default_factory=dict)
 
     model_config = {"arbitrary_types_allowed": True}
-
-
 class ScanReport(BaseModel):
     root: Path
     findings: list[Finding] = Field(default_factory=list)
@@ -66,14 +55,10 @@ class RefactorChange(BaseModel):
     description: str
     line: int | None = None
     metadata: dict[str, Any] = Field(default_factory=dict)
-
-
 class RefactorPlan(BaseModel):
     root: Path = Path(".")
     changes: list[RefactorChange] = Field(default_factory=list)
     dry_run: bool = True
-
-
 class RefactorResult(BaseModel):
     plan: RefactorPlan
     modified_files: list[Path] = Field(default_factory=list)

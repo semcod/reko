@@ -14,7 +14,7 @@ def _copy_fixture(tmp_path: Path, name: str = "sample.py") -> Path:
     return target
 
 
-def test_extract_constants_dry_run(tmp_path):
+def test_extract_constants_dry_run(tmp_path: Path) -> None:
     sample = _copy_fixture(tmp_path)
     result = extract_constants(sample, dry_run=True)
     assert result.plan.changes
@@ -23,7 +23,7 @@ def test_extract_constants_dry_run(tmp_path):
     )
 
 
-def test_extract_constants_apply(tmp_path):
+def test_extract_constants_apply(tmp_path: Path) -> None:
     sample = _copy_fixture(tmp_path)
     target = tmp_path / "constants.py"
     result = extract_constants(
@@ -37,7 +37,7 @@ def test_extract_constants_apply(tmp_path):
     assert result.modified_files
 
 
-def test_split_structures_apply(tmp_path):
+def test_split_structures_apply(tmp_path: Path) -> None:
     sample = _copy_fixture(tmp_path)
     result = split_structures(sample, dry_run=False)
     text = sample.read_text(encoding="utf-8")
@@ -45,7 +45,7 @@ def test_split_structures_apply(tmp_path):
     assert result.modified_files == [sample] or not result.plan.changes
 
 
-def test_remove_unused_constants(tmp_path):
+def test_remove_unused_constants(tmp_path: Path) -> None:
     sample = _copy_fixture(tmp_path)
     result = remove_unused_constants(sample, dry_run=False)
     text = sample.read_text(encoding="utf-8")
@@ -54,7 +54,7 @@ def test_remove_unused_constants(tmp_path):
     assert result.modified_files == [sample]
 
 
-def test_move_constants(tmp_path):
+def test_move_constants(tmp_path: Path) -> None:
     sample = _copy_fixture(tmp_path)
     target = tmp_path / "moved.py"
     result = move_constants(sample, target, names={"USED"}, dry_run=False)

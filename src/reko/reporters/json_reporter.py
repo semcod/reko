@@ -1,15 +1,10 @@
 """Reporter JSON/YAML dla wyników skanowania."""
-
-from __future__ import annotations
-
 import json
 from pathlib import Path
 
 import yaml
 
 from reko.models import ScanReport
-
-
 def report_to_dict(report: ScanReport) -> dict:
     return {
         "root": str(report.root),
@@ -30,8 +25,6 @@ def report_to_dict(report: ScanReport) -> dict:
             for finding in report.findings
         ],
     }
-
-
 def write_report(report: ScanReport, output: Path, fmt: str = "json") -> None:
     payload = report_to_dict(report)
     output.parent.mkdir(parents=True, exist_ok=True)

@@ -1,7 +1,4 @@
 """Konfiguracja reko."""
-
-from __future__ import annotations
-
 from pathlib import Path
 from typing import Any
 
@@ -12,8 +9,6 @@ try:
     import tomllib
 except ImportError:  # pragma: no cover
     import tomli as tomllib  # type: ignore[no-redef]
-
-
 class ScanConfig(BaseModel):
     extensions: list[str] = Field(default_factory=lambda: [".py"])
     exclude: list[str] = Field(
@@ -39,41 +34,29 @@ class ScanConfig(BaseModel):
     number_threshold: int = 10
     detect_repeated: bool = True
     min_repeat_count: int = 2
-
-
 class ExtractConfig(BaseModel):
     target: str = "constants.py"
     naming: str = "upper_snake"
     group_by: str = "file"
     add_import: bool = True
-
-
 class SplitConfig(BaseModel):
     min_keys: int = 4
     min_items: int = 5
     prefix: str = "PART_"
-
-
 class MoveConfig(BaseModel):
     update_imports: bool = True
     remove_from_source: bool = True
-
-
 class RekoConfig(BaseModel):
     scan: ScanConfig = Field(default_factory=ScanConfig)
     extract: ExtractConfig = Field(default_factory=ExtractConfig)
     split: SplitConfig = Field(default_factory=SplitConfig)
     move: MoveConfig = Field(default_factory=MoveConfig)
-
-
 def _load_yaml(path: Path) -> dict[str, Any]:
     with path.open(encoding="utf-8") as handle:
         data = yaml.safe_load(handle) or {}
     if not isinstance(data, dict):
         return {}
     return data
-
-
 def _load_toml(path: Path) -> dict[str, Any]:
     with path.open("rb") as handle:
         data = tomllib.load(handle)
@@ -83,8 +66,6 @@ def _load_toml(path: Path) -> dict[str, Any]:
         if isinstance(reko, dict):
             return reko
     return {}
-
-
 def load_config(root: Path | None = None) -> RekoConfig:
     root = root or Path(".")
     candidates = [

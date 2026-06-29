@@ -1,15 +1,10 @@
 """Przenoszenie stałych między modułami."""
-
-from __future__ import annotations
-
 import ast
 from pathlib import Path
 
 from reko.config import RekoConfig, load_config
 from reko.models import RefactorAction, RefactorChange, RefactorPlan, RefactorResult
 from reko.refactor._utils import ensure_trailing_newline, read_module, write_module
-
-
 def _assignment_lines(source: str, tree: ast.Module, names: set[str]) -> dict[str, str]:
     lines = source.splitlines()
     result: dict[str, str] = {}
@@ -37,8 +32,6 @@ def _remove_assignments(source: str, tree: ast.Module, names: set[str]) -> str:
     for start, end in sorted(remove_ranges, reverse=True):
         del lines[start : end + 1]
     return "".join(lines)
-
-
 def _ensure_import(source: str, module: str, names: set[str]) -> str:
     import_line = f"from {module} import {', '.join(sorted(names))}"
     if import_line in source:
@@ -48,7 +41,7 @@ def _ensure_import(source: str, module: str, names: set[str]) -> str:
     for index, line in enumerate(lines):
         if line.startswith(("import ", "from ")):
             insert_at = index + 1
-    lines.insert(insert_at, import_line + "\n")
+    lines.insert(insert_at, f"{import_line}\n")
     return "".join(lines)
 
 
@@ -71,8 +64,9 @@ def move_constants(
         )
 
     target_text = target.read_text(encoding="utf-8") if target.exists() else ""
-    moved_block = "\n\n".join(blocks[name] for name in sorted(names)) + "\n"
-    updated_target = ensure_trailing_newline(target_text + "\n" + moved_block)
+    joined_blocks = "\n\n".join(blocks[name] for name in sorted(names))
+    moved_block = f"{joined_blocks}\n"
+    updated_target = ensure_trailing_newline(f"{target_text}\n{moved_block}")
 
     updated_source = _remove_assignments(source_text, source_tree, names)
     if config.move.update_imports:

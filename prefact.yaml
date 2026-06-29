@@ -1,5 +1,5 @@
 project_root: .
-package_name: ''
+package_name: reko
 include:
 - '**/*.py'
 exclude:
@@ -14,13 +14,14 @@ exclude:
 - '**/build/**'
 - '**/dist/**'
 - '**/*.egg-info/**'
-- '**/tests/**'
+- '**/examples/**'
+- '**/tests/fixtures/**'
 tools:
   parallel: true
   cache: true
   ruff:
     enabled: true
-    max_line_length: 88
+    max_line_length: 100
     select:
     - E
     - F
@@ -38,17 +39,6 @@ tools:
     multi_line_output: 3
 performance:
   max_workers: 4
-  cache_size: 104857600
-  chunk_size: 10
-  autonomous_max_examples_per_issue: 3
-  autonomous_max_issues: 500
-  autonomous_max_files_to_scan: 1000
-  autonomous_max_issues_per_file: 50
-  autonomous_max_run_seconds: 300
-  autonomous_max_tickets: 100
-  autonomous_max_todo_items: 200
-  autonomous_max_completed_todos: 100
-  autonomous_max_todo_execution_items: 50
 rules:
   unused-imports:
     enabled: true
@@ -56,39 +46,16 @@ rules:
     - ruff
     - autoflake
     severity: error
-  relative-imports:
-    enabled: true
-    tools:
-    - libcst
-    auto_fix: true
+  magic-numbers:
+    enabled: false
+  string-concat:
+    enabled: false
   missing-return-type:
     enabled: true
     tools:
     - mypy
     severity: warning
+  ai-boilerplate:
+    enabled: false
   llm-hallucinations:
-    enabled: true
-  magic-numbers:
-    enabled: true
-plugins:
-  enabled: true
-  directories:
-  - ~/.prefact/plugins
-  - ./.prefact/plugins
-environments:
-  development:
-    rules:
-      print-statements:
-        enabled: true
-      magic-numbers:
-        enabled: false
-    performance:
-      max_workers: 2
-  production:
-    rules:
-      print-statements:
-        enabled: false
-      magic-numbers:
-        enabled: true
-    performance:
-      max_workers: 8
+    enabled: false
