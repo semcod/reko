@@ -4,10 +4,10 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "reku"
-version = "0.1.4"
+version = "0.1.5"
 description = "Refaktoryzacja hardkodowanych wartości, struktur i kodu w projektach Python"
 readme = "README.md"
-license = "Apache-2.0"
+license = {text = "Apache-2.0"}
 requires-python = ">=3.10"
 authors = [
     { name = "Tom Sapletta", email = "tom@sapletta.com" },
